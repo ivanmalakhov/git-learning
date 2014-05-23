@@ -1,3 +1,4 @@
+//1. Напишите функцию разбора query-строки в набор параметров.
 var parseUrl = function (url) {
   var result = {}, param, params, QueryString, i;
   if ((url == null) || (url == '')){
@@ -14,6 +15,7 @@ var parseUrl = function (url) {
   return result;
 };
 
+//2. Допустим, параметры http-запроса хранятся как свойства объекта. Напишите функцию сериализации параметров в query-строку с добавлением к произвольному url.
 var createNewUrl = function (anyUrl, params) {
   var existParams = parseUrl(anyUrl); // получаем информацию о существующих параметрах
   var urlObject = document.createElement('a');// формируем объект по имеющейся ссылке
@@ -31,6 +33,7 @@ var createNewUrl = function (anyUrl, params) {
   return resultUrl + '?' + resultParams.join("&");
 }
 
+//3. Напишите систему сравнения двух наборов параметров форм. Имена параметров могут повторяться. Система должна отвечать на вопрос: «Что изменилось в параметрах?». Сделайте для этой системы html-интерфейс.
 function compareParams(params1, params2) {
   var paramsStatus = {};
   
