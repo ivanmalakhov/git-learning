@@ -1,0 +1,28 @@
+
+body {
+    background-color: #eee;
+    margin: 5px;
+    font-family: verdana, sans-serif;
+}
+
+		
+div#content {
+    padding: 10px;
+	background-color: rgba(232, 232, 232, 0.7);
+	border: 5px solid rgba(5, 146, 245, 0.5);
+    width: 220px;
+	margin-left: 20px;
+	margin-top: 20px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+
