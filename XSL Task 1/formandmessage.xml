@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?> 
-
-<root>
+<?xml-stylesheet type="text/xsl" href="formandmessage.xsl"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="formandmessage.xsd">
 	<forms>
 		<form class="PaymentForm" id = "Step_1"></form>	
-		<form class="PaymentForm" id = "Step_2"></form>	
+		<form class="PaymentForm" id = "Step_2"></form>
+		<form class="PaymentForm" id = "Step_3"></form>		
 	</forms>
 	<messages>
-		<message id = "1">Сообщение 1</message>
-		<message id = "2">Сообщение 2</message>			
+		<message id = "1" form_id="Step_1" messagetype="info">
+			<title>Информационное сообщение</title>
+			<section>Текст информационного сообщения</section>
+			<section>Продолжение текста информационного сообщения</section>
+		</message>
+		<message id = "2" form_id="Step_2" messagetype="warning">
+			<title>Предупреждающее сообщение</title>
+			<section>Текст предупреждающего сообщения</section>
+			<section>Продолжение текста предупреждающего сообщения</section>			
+		</message>
+		<message id = "3" form_id="Step_3" messagetype="critical">
+			<title>Критическое сообщение</title>
+			<section>Текст критического сообщения</section>
+			<section>Продолжение текста критического сообщения</section>			
+		</message>				
 	</messages>		
-</root>
+</root>	
 	
