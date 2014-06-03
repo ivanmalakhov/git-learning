@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<root>
+	<forms>
+		<form class="PaymentForm" id = "Step_1"></form>	
+		<form class="PaymentForm" id = "Step_2"></form>	
+	</forms>
+	<messages>
+		<message id = "1">Сообщение 1</message>
+		<message id = "2">Сообщение 2</message>			
+	</messages>		
+</root>
+	
