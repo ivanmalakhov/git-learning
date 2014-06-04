@@ -1,7 +1,7 @@
 <?xml version="1.0"?> 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
  	<xsl:output method="html"/>
-
+ 	<xsl:param name="scid"/> <!-- Добавлено получение внешнего параметра. Через браузер запустить не удалось, а вот в процессорах работает -->
 	<xsl:template match="/">
 		<html>
 			<head>
@@ -9,10 +9,12 @@
 			</head>
 			<body>
 				<div>
-					<xsl:apply-templates select="root/forms" />
+					<xsl:value-of select="$scid"/>
+					<xsl:copy-of select="$scid"/>
+					<xsl:apply-templates select="payment/forms" />
 				</div>
 				<div>
-					<xsl:apply-templates select="root/messages" />
+					<xsl:apply-templates select="payment/messages" />
 				</div>
 			</body>
 		</html>						

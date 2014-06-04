@@ -1,27 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?> 
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="formandmessage.xsl"?>
-<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="formandmessage.xsd">
+<payment paymentname="MTS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="formandmessage.xsd">
 	<forms>
-		<form class="PaymentForm" id = "Step_1"></form>	
-		<form class="PaymentForm" id = "Step_2"></form>
-		<form class="PaymentForm" id = "Step_3"></form>		
+		<form class="paymentform" id="step_1"/>
+		<form class="paymentform" id="step_2"/>
+		<form class="paymentform" id="step_3"/>
 	</forms>
 	<messages>
-		<message id = "1" form_id="Step_1" messagetype="info">
+		<message id="1" form_id="step_1" messagetype="info" visible="true">
 			<title>Информационное сообщение</title>
 			<section>Текст информационного сообщения</section>
 			<section>Продолжение текста информационного сообщения</section>
 		</message>
-		<message id = "2" form_id="Step_2" messagetype="warning">
+		<message id="2" form_id="step_2" messagetype="warning" visible="true">
 			<title>Предупреждающее сообщение</title>
 			<section>Текст предупреждающего сообщения</section>
-			<section>Продолжение текста предупреждающего сообщения</section>			
+			<section>Продолжение текста предупреждающего сообщения</section>
 		</message>
-		<message id = "3" form_id="Step_3" messagetype="critical">
+		<message id="3" form_id="step_3" messagetype="critical" visible="false">
 			<title>Критическое сообщение</title>
 			<section>Текст критического сообщения</section>
-			<section>Продолжение текста критического сообщения</section>			
-		</message>				
-	</messages>		
-</root>	
-	
+			<section>Продолжение текста критического сообщения</section>
+		</message>
+	</messages>
+</payment>

@@ -1,5 +1,52 @@
-<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Ivan (Home PC) -->
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<xsd:element name="root"></xsd:element>
-
+	<xsd:element name="payment">
+		<xsd:annotation>
+			<xsd:documentation>Корневой элемент</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="forms">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="form" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:attribute name="class" type="xsd:string" use="required"/>
+									<xsd:attribute name="id" type="xsd:string" use="required"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="messages">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="message" maxOccurs="unbounded">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="title" type="xsd:string"/>
+										<xsd:element name="section" type="xsd:string" maxOccurs="unbounded"/>
+									</xsd:sequence>
+									<xsd:attribute name="visible" type="xsd:boolean"/>
+									<xsd:attribute name="messagetype" use="required">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="info"/>
+												<xsd:enumeration value="warning"/>
+												<xsd:enumeration value="critical"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:attribute>
+									<xsd:attribute name="form_id"/>
+									<xsd:attribute name="id"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="paymentname" type="xsd:string" use="required"/>
+		</xsd:complexType>
+	</xsd:element>
 </xsd:schema>
