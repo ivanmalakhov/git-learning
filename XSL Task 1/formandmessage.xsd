@@ -24,14 +24,21 @@
 						<xsd:sequence>
 							<xsd:element name="message" maxOccurs="unbounded">
 								<xsd:complexType>
-									<xsd:sequence>
+									<xsd:sequence minOccurs="0" maxOccurs="unbounded">
 										<xsd:element name="form_id" maxOccurs="unbounded">
 											<xsd:annotation>
 												<xsd:documentation>Одно и тоже сообщение может быть на разных формах. В данной ноде хранятся ссылки на формы.</xsd:documentation>
 											</xsd:annotation>
 										</xsd:element>
-										<xsd:element name="title" type="xsd:string"/>
-										<xsd:element name="section" type="xsd:string" maxOccurs="unbounded"/>
+										<xsd:element name="title" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="section" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+													<xsd:element name="listtext" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+													<xsd:element name="simpletext" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
 									</xsd:sequence>
 									<xsd:attribute name="visible" type="xsd:boolean"/>
 									<xsd:attribute name="messagetype" use="required">

@@ -1,0 +1,52 @@
+body, td {
+    font-family: Arial,Geneva CY,Sans-Serif;
+}
+
+.ttl {
+    font-size: 130%;
+    font-weight: bold;
+    line-height: 1.4em;
+    margin-bottom: 0.3em;
+}
+.warning .ttl{
+	color:yellow;
+}
+.info .ttl{
+	color:green;
+}
+.critical .ttl{
+	color:red;
+}
+
+
+div.form {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.06) 0px, rgba(255, 255, 255, 0.06) 30px) repeatno-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-collapse: separate;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 16px 6% 14px 4%;
+    position: relative;
+}
+
+div.info div {
+    margin-bottom: 0.3em;
+}
+li {
+    list-style-position: outside;
+    list-style-type: disc;
+    margin-bottom: 0.25em;
+    margin-left: 1.5em;
+}
+ul {
+    padding-left: 1.5em;
+}
+.info, .warning, .critical {
+    padding-left: 3em;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.06) 0px, rgba(255, 255, 255, 0.06) 30px) repeatno-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-collapse: separate;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 16px 6% 14px 4%;
+    position: relative;
+    font-size: 0.8em;
+}

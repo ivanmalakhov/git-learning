@@ -9,22 +9,54 @@
 	<messages>
 		<message id="1" messagetype="info" visible="true">
 			<form_id>step_1</form_id>
-			<title>Информационное сообщение</title>
-			<section>Текст информационного сообщения</section>
-			<section>Продолжение текста информационного сообщения</section>
+			<title>Information message</title>
+			<section>
+				<simpletext>Information message text1</simpletext>
+				<listtext>list 1</listtext>
+				<simpletext>Information message text2</simpletext>
+				<listtext>list 2</listtext>
+				<simpletext>Information message text3</simpletext>
+			</section>
+			<section>
+				<simpletext>Information message text21</simpletext>
+				<listtext>list 12</listtext>
+				<listtext>list 222</listtext>
+				<simpletext>Information message text22</simpletext>
+			</section>
 		</message>
 		<message id="2" messagetype="warning" visible="true">
 			<form_id>step_1</form_id>
 			<form_id>step_2</form_id>
-			<title>Предупреждающее сообщение</title>
-			<section>Текст предупреждающего сообщения</section>
-			<section>Продолжение текста предупреждающего сообщения</section>
+			<title>Warning message</title>
+			<section>
+				<simpletext>Warning message text2</simpletext>
+				<listtext>list 12</listtext>
+				<listtext>list 222</listtext>
+				<simpletext>Warning message text2</simpletext>
+			</section>
+			<section>
+				<simpletext>Warning message text2</simpletext>
+				<listtext>list 12</listtext>
+				<listtext>list 222</listtext>
+				<simpletext>Warning message text2</simpletext>
+			</section>
 		</message>
 		<message id="3" messagetype="critical" visible="false">
 			<form_id>step_3</form_id>
-			<title>Критическое сообщение</title>
-			<section>Текст критического сообщения</section>
-			<section>Продолжение текста критического сообщения</section>
+			<form_id>step_1</form_id>
+			<title>Critical message</title>
+			<section>
+				<simpletext>Critical message text2</simpletext>
+				<listtext>list 12</listtext>
+				<listtext>list 222</listtext>
+				<simpletext>Critical message text2</simpletext>
+			</section>
+			<section>
+				<simpletext>Critical message text2</simpletext>
+				<listtext>list 12</listtext>
+				<listtext>list 222</listtext>
+				<simpletext>Critical message text2</simpletext>
+			</section>
 		</message>
 	</messages>
 </payment>

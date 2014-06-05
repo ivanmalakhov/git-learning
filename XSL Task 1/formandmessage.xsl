@@ -6,7 +6,8 @@
 	<xsl:template match="/">
 		<html>
 			<head>
-				<title>Прием платежа</title>
+				<title>Payment</title>
+				<link rel="stylesheet" type="text/css" href="formandmessage.css" />
 			</head>
 			<body>
 				 <div class="main">
@@ -23,24 +24,47 @@
 	</xsl:template>
 	<xsl:template match="forms">
 		<form>
-			<div>Форма</div>
+			<div>Form</div>
 			<xsl:apply-templates select="form"/>
 		</form>
 	</xsl:template>
 	<xsl:template match="messages">
-		<div>Сообщения</div>
+		<div>Messages</div>
 		<xsl:apply-templates select="message"/>
 	</xsl:template>
 	<xsl:template match="form">
 		<form class="mform" name="mform" action="/formandmessage/?scid=step_2" method="post">
-			Элемент формы
+			Form Element
 			<xsl:value-of select="."/>
 		</form>	
 	</xsl:template>
 	<xsl:template match="message">
-		<div class= "">Сообщение
-			<h1><xsl:value-of select="title/text()"/></h1>
-			<div><xsl:value-of select="section/text()"/></div>
+		<div class= "info">
+			<xsl:attribute name="class" >
+				<xsl:value-of select="@messagetype"/>
+			</xsl:attribute>
+			<xsl:apply-templates select="title"/>
+			<xsl:apply-templates select="section"/>
 		</div>
 	</xsl:template>
+	<xsl:template match="title">
+		<div class="ttl">
+			<xsl:value-of select="text()"/>
+		</div>
+	</xsl:template>
+	<xsl:template match="section">
+		<div class="section">
+			<xsl:apply-templates/>
+		</div>
+	</xsl:template>
+	<xsl:template match="simpletext">
+		<div class="simpletext">
+				<xsl:value-of select="text()"/>
+		</div>
+	</xsl:template>
+	<xsl:template match="listtext">
+		<li class="li">
+				<xsl:value-of select="text()"/>
+		</li>
+	</xsl:template>	
 </xsl:stylesheet>
