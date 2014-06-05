@@ -25,6 +25,11 @@
 							<xsd:element name="message" maxOccurs="unbounded">
 								<xsd:complexType>
 									<xsd:sequence>
+										<xsd:element name="form_id" maxOccurs="unbounded">
+											<xsd:annotation>
+												<xsd:documentation>Одно и тоже сообщение может быть на разных формах. В данной ноде хранятся ссылки на формы.</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
 										<xsd:element name="title" type="xsd:string"/>
 										<xsd:element name="section" type="xsd:string" maxOccurs="unbounded"/>
 									</xsd:sequence>
@@ -38,7 +43,6 @@
 											</xsd:restriction>
 										</xsd:simpleType>
 									</xsd:attribute>
-									<xsd:attribute name="form_id"/>
 									<xsd:attribute name="id"/>
 								</xsd:complexType>
 							</xsd:element>

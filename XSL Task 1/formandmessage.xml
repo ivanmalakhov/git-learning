@@ -7,17 +7,21 @@
 		<form class="paymentform" id="step_3"/>
 	</forms>
 	<messages>
-		<message id="1" form_id="step_1" messagetype="info" visible="true">
+		<message id="1" messagetype="info" visible="true">
+			<form_id>step_1</form_id>
 			<title>Информационное сообщение</title>
 			<section>Текст информационного сообщения</section>
 			<section>Продолжение текста информационного сообщения</section>
 		</message>
-		<message id="2" form_id="step_2" messagetype="warning" visible="true">
+		<message id="2" messagetype="warning" visible="true">
+			<form_id>step_1</form_id>
+			<form_id>step_2</form_id>
 			<title>Предупреждающее сообщение</title>
 			<section>Текст предупреждающего сообщения</section>
 			<section>Продолжение текста предупреждающего сообщения</section>
 		</message>
-		<message id="3" form_id="step_3" messagetype="critical" visible="false">
+		<message id="3" messagetype="critical" visible="false">
+			<form_id>step_3</form_id>
 			<title>Критическое сообщение</title>
 			<section>Текст критического сообщения</section>
 			<section>Продолжение текста критического сообщения</section>
