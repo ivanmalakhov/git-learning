@@ -7,7 +7,7 @@
 		<form class="paymentform" id="step_3"/>
 	</forms>
 	<messages>
-		<message id="1" messagetype="info" visible="true">
+		<message id="1" messagetype="1" visible="true">
 			<form_id>step_1</form_id>
 			<title>Information message</title>
 			<section>
@@ -24,24 +24,7 @@
 				<simpletext>Information message text22</simpletext>
 			</section>
 		</message>
-		<message id="2" messagetype="warning" visible="true">
-			<form_id>step_1</form_id>
-			<form_id>step_2</form_id>
-			<title>Warning message</title>
-			<section>
-				<simpletext>Warning message text2</simpletext>
-				<listtext>list 12</listtext>
-				<listtext>list 222</listtext>
-				<simpletext>Warning message text2</simpletext>
-			</section>
-			<section>
-				<simpletext>Warning message text2</simpletext>
-				<listtext>list 12</listtext>
-				<listtext>list 222</listtext>
-				<simpletext>Warning message text2</simpletext>
-			</section>
-		</message>
-		<message id="3" messagetype="critical" visible="false">
+		<message id="3" messagetype="3" visible="false">
 			<form_id>step_3</form_id>
 			<form_id>step_1</form_id>
 			<title>Critical message</title>
@@ -56,6 +39,23 @@
 				<listtext>list 12</listtext>
 				<listtext>list 222</listtext>
 				<simpletext>Critical message text2</simpletext>
+			</section>
+		</message>
+		<message id="2" messagetype="2" visible="true">
+			<form_id>step_1</form_id>
+			<form_id>step_2</form_id>
+			<title>Warning message</title>
+			<section>
+				<simpletext>Warning message text2</simpletext>
+				<listtext>list 12</listtext>
+				<listtext>list 222</listtext>
+				<simpletext>Warning message text2</simpletext>
+			</section>
+			<section>
+				<simpletext>Warning message text2</simpletext>
+				<listtext>list 12</listtext>
+				<listtext>list 222</listtext>
+				<simpletext>Warning message text2</simpletext>
 			</section>
 		</message>
 	</messages>

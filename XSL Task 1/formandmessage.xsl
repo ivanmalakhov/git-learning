@@ -16,7 +16,9 @@
 						<xsl:apply-templates select="/payment/forms/form[@id=$scid]"/><!-- Адресное обращение. обращаемся к конкретной форме-->
 					</div>
 					<div class="messages">
-						<xsl:apply-templates select="/payment/messages/message[form_id=$scid]"/>
+						<xsl:apply-templates select="/payment/messages/message[form_id=$scid]">
+							<xsl:sort  data-type="number" order="descending" select="@messagetype"/>
+						</xsl:apply-templates>
 					</div>
 				</div>
 			</body>
@@ -39,9 +41,20 @@
 		</form>	
 	</xsl:template>
 	<xsl:template match="message">
-		<div class= "info">
+		<div>
 			<xsl:attribute name="class" >
-				<xsl:value-of select="@messagetype"/>
+				<xsl:variable name="messagetype" select="@messagetype"/>
+				<xsl:choose >
+					<xsl:when test="$messagetype=1">
+						<xsl:text>info</xsl:text>
+					</xsl:when>
+					<xsl:when test="$messagetype=2">
+						<xsl:text>warning</xsl:text>
+					</xsl:when>
+					<xsl:when test="$messagetype=3">
+						<xsl:text>critical</xsl:text>
+					</xsl:when>
+				</xsl:choose>
 			</xsl:attribute>
 			<xsl:apply-templates select="title"/>
 			<xsl:apply-templates select="section"/>
