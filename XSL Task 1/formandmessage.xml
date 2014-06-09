@@ -2,6 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="formandmessage.xsl"?>
 <payment paymentname="MTS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="formandmessage.xsd">
 	<forms>
+		<!-- Задание 3-->
 		<form class="paymentform" id="step_1"/>
 		<form class="paymentform" id="step_2"/>
 		<form class="paymentform" id="step_3"/>
