@@ -10,38 +10,37 @@
 				<link rel="stylesheet" type="text/css" href="formandmessage.css" />
 			</head>
 			<body>
-				 <div class="main">
-					<div class="forms">
-						<xsl:value-of select="$scid"/>
+				<xsl:element name="div">				
+					<xsl:attribute name="class">main</xsl:attribute>
+					<xsl:element name="div">				
+						<xsl:attribute name="class">form</xsl:attribute>
 						<xsl:apply-templates select="/payment/forms/form[@id=$scid]"/><!-- Адресное обращение. обращаемся к конкретной форме-->
-					</div>
-					<div class="messages">
-						<xsl:apply-templates select="/payment/messages/message[form_id=$scid]">
+					</xsl:element>
+					<xsl:element name="div">				
+						<xsl:attribute name="class">messages</xsl:attribute>
+						<xsl:apply-templates select="/payment/messages/message[form_id=$scid]"> <!--  Адресное образщение к сообщения к сообщениям для конкретной формы-->
 							<xsl:sort  data-type="number" order="descending" select="@messagetype"/>
 						</xsl:apply-templates>
-					</div>
-				</div>
+					</xsl:element>
+				</xsl:element> <!-- Div Class main -->
 			</body>
 		</html>
 	</xsl:template>
-	<xsl:template match="forms">
-		<form>
-			<div>Form</div>
-			<xsl:apply-templates select="form"/>
-		</form>
-	</xsl:template>
-	<xsl:template match="messages">
-		<div>Messages</div>
-		<xsl:apply-templates select="message"/>
-	</xsl:template>
 	<xsl:template match="form">
-		<form class="mform" name="mform" action="/formandmessage/?scid=step_2" method="post">
-			Form Element
+		<xsl:element name="div">
+			<xsl:attribute name="class">formhead</xsl:attribute>
+			<xsl:text>Form</xsl:text>
+		</xsl:element>
+		<xsl:element name="form">
+			<xsl:attribute name="class">mform</xsl:attribute>
+			<xsl:attribute name="name">mform</xsl:attribute>
+			<xsl:attribute name="action"><xsl:text disable-output-escaping="yes">/formandmessage/?scid=step_2</xsl:text></xsl:attribute>
+			<xsl:attribute name="method">post</xsl:attribute>
 			<xsl:value-of select="."/>
-		</form>	
+		</xsl:element>
 	</xsl:template>
 	<xsl:template match="message">
-		<div>
+		<xsl:element name="div">
 			<xsl:attribute name="class" >
 				<xsl:variable name="messagetype" select="@messagetype"/>
 				<xsl:choose >
@@ -58,26 +57,29 @@
 			</xsl:attribute>
 			<xsl:apply-templates select="title"/>
 			<xsl:apply-templates select="section"/>
-		</div>
+		</xsl:element>
 	</xsl:template>
 	<xsl:template match="title">
-		<div class="ttl">
+		<xsl:element name="div">
+			<xsl:attribute name="class">ttl</xsl:attribute>
 			<xsl:value-of select="text()"/>
-		</div>
+		</xsl:element>
 	</xsl:template>
 	<xsl:template match="section">
-		<div class="section">
+		<xsl:element name="div">
+			<xsl:attribute name="class">section</xsl:attribute>
 			<xsl:apply-templates/>
-		</div>
+		</xsl:element>
 	</xsl:template>
 	<xsl:template match="simpletext">
-		<div class="simpletext">
-				<xsl:value-of select="text()"/>
-		</div>
+		<xsl:element name="div">
+			<xsl:attribute name="class">simpletext</xsl:attribute>
+			<xsl:value-of select="text()"/>
+		</xsl:element>
 	</xsl:template>
 	<xsl:template match="listtext">
-		<li class="li">
+		<xsl:element name="li">
 				<xsl:value-of select="text()"/>
-		</li>
+		</xsl:element>
 	</xsl:template>	
 </xsl:stylesheet>
