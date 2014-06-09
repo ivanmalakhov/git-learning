@@ -3,7 +3,56 @@
 <payment paymentname="MTS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="formandmessage.xsd">
 	<forms>
 		<!-- Задание 3-->
-		<form class="paymentform" id="step_1"/>
+		<form class="paymentform" id="step_1">
+			<formelements>
+				<input ref="FormComment">
+					<label>Название</label>
+				</input>
+				<input ref="TempAccount">
+					<label>Лицевой счет</label>
+					<hint>9 цифр</hint>
+				</input>
+				<group class="xf_group inrow all"> <!-- предположительно все элементы в группе будут выводиться в одну строку-->
+					<label>Период</label>
+					<select ref="month">
+						<hint>месяц</hint>
+						<item><label>Январь</label><value>01</value></item>
+						<item><label>Февраль</label><value>02</value></item>
+						<item><label>Март</label><value>03</value></item>
+						<item><label>Апрель</label><value>04</value></item>
+						<item><label>Май</label><value>05</value></item>
+						<item><label>Июнь</label><value>06</value></item>
+						<item><label>Июль</label><value>07</value></item>
+						<item><label>Август</label><value>08</value></item>
+						<item><label>Сентябрь</label><value>09</value></item>
+						<item><label>Октябрь</label><value>10</value></item>
+						<item><label>Ноябрь</label><value>11</value></item>
+						<item><label>Декабрь</label><value>12</value></item>
+					</select>
+					<input ref="year">
+						<hint>год</hint>
+					</input>
+				</group>
+				<input ref="peni">
+					<label>Пени</label>
+				</input>
+				<input ref="sum">
+					<label>Сумма</label>
+				</input>
+				<select ref="paymenttype" appearance="full">
+	 			  <label>Тип платежа</label>
+				   <item>
+				      <label>Срочный</label><value>1</value>
+				   </item>
+				   <item>
+				      <label>Отложенный</label><value>2</value>
+				   </item>
+				</select>
+				<submit submission="submit">
+					<label>Submit</label>
+				</submit>
+			</formelements>
+		</form>
 		<form class="paymentform" id="step_2"/>
 		<form class="paymentform" id="step_3"/>
 	</forms>
