@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-	<xsl:output method="html"/>
+	<xsl:output method="html" encoding="UTF-8"/>
 	<xsl:param name="scid"/>
 	<!-- Добавлено получение внешнего параметра. Через браузер запустить не удалось, а вот в процессорах работает -->
 	<xsl:template match="/">
@@ -36,9 +36,45 @@
 			<xsl:attribute name="name">mform</xsl:attribute>
 			<xsl:attribute name="action"><xsl:text disable-output-escaping="yes">/formandmessage/?scid=step_2</xsl:text></xsl:attribute>
 			<xsl:attribute name="method">post</xsl:attribute>
-			<xsl:value-of select="."/>
+			<xsl:apply-templates/>
 		</xsl:element>
 	</xsl:template>
+	<xsl:template match="input">
+		<xsl:element name="div">
+			<xsl:call-template name="simpleinput">
+				<xsl:with-param name="id" select="@ref"/>
+				<xsl:with-param name="label" select="label"/>
+				<xsl:with-param name="value" select="value"/>
+				<xsl:with-param name="hint" select="hint"/>				
+			</xsl:call-template>
+		</xsl:element>
+	</xsl:template>
+	<xsl:template name="simpleinput">
+		<xsl:param name="id"/>
+		<xsl:param name="label"/>
+		<xsl:param name="value"/>
+		<xsl:param name="hint"/>
+		<xsl:element name="label">
+			<xsl:attribute name="for" ><xsl:value-of select="$id"/></xsl:attribute>
+			<xsl:value-of select="$label/text()"/>
+		</xsl:element>
+		<!--<xsl:element name="div">-->
+			<xsl:element name="input">
+				<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
+				<xsl:attribute name="name"><xsl:value-of select="$id"/></xsl:attribute>
+				<xsl:attribute name="value"><xsl:value-of select="$value/text()"/></xsl:attribute>
+				<xsl:element name="span"><xsl:value-of select="$hint/text()"/></xsl:element>
+				
+			</xsl:element>
+		<!--</xsl:element>	-->
+	</xsl:template>
+<!--	<xsl:template match="label" mode="input">
+		<xsl:param name="for"/>
+		<xsl:element name="label">
+			<xsl:attribute name="for" ><xsl:text><xsl:value-of select="$for"/></xsl:text></xsl:attribute>
+			<xsl:value-of select="text()"/>
+		</xsl:element>
+	</xsl:template>-->
 	<xsl:template match="message">
 		<xsl:element name="div">
 			<xsl:attribute name="class" >

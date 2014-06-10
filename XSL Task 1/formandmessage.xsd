@@ -12,6 +12,82 @@
 						<xsd:sequence>
 							<xsd:element name="form" maxOccurs="unbounded">
 								<xsd:complexType>
+									<xsd:choice minOccurs="0" maxOccurs="unbounded">
+										<xsd:element name="input" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="label" type="xsd:string"/>
+													<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
+													<xsd:element name="value" minOccurs="0"/>
+												</xsd:sequence>
+												<xsd:attribute name="ref" type="xsd:string" use="required"/>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="select" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="label" minOccurs="0"/>
+													<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
+													<xsd:element name="item" maxOccurs="unbounded">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="label" type="xsd:string"/>
+																<xsd:element name="value"/>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+													<xsd:element name="value" minOccurs="0"/>
+												</xsd:sequence>
+												<xsd:attribute name="ref" type="xsd:string" use="required"/>
+												<xsd:attribute name="appearance" type="xsd:string"/>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="submit">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="label" type="xsd:string"/>
+												</xsd:sequence>
+												<xsd:attribute name="submission" use="required"/>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="group" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:choice minOccurs="0" maxOccurs="unbounded">
+													<xsd:element name="label" type="xsd:string"/>
+													<xsd:element name="input" minOccurs="0" maxOccurs="unbounded">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="label" type="xsd:string" minOccurs="0"/>
+																<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
+																<xsd:element name="value" minOccurs="0"/>
+															</xsd:sequence>
+															<xsd:attribute name="ref" type="xsd:string"/>
+														</xsd:complexType>
+													</xsd:element>
+													<xsd:element name="select" minOccurs="0" maxOccurs="unbounded">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="label" minOccurs="0"/>
+																<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
+																<xsd:element name="item" maxOccurs="unbounded">
+																	<xsd:complexType>
+																		<xsd:sequence>
+																			<xsd:element name="label" type="xsd:string"/>
+																			<xsd:element name="value"/>
+																		</xsd:sequence>
+																	</xsd:complexType>
+																</xsd:element>
+																<xsd:element name="value" minOccurs="0"/>
+															</xsd:sequence>
+															<xsd:attribute name="ref" type="xsd:string" use="required"/>
+															<xsd:attribute name="appearance" type="xsd:string"/>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:choice>
+												<xsd:attribute name="class" type="xsd:string"/>
+											</xsd:complexType>
+										</xsd:element>
+									</xsd:choice>
 									<xsd:attribute name="class" type="xsd:string" use="required"/>
 									<xsd:attribute name="id" type="xsd:string" use="required"/>
 								</xsd:complexType>
