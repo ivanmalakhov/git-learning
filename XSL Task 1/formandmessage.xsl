@@ -86,6 +86,10 @@
 				<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
 				<xsl:attribute name="name"><xsl:value-of select="$id"/></xsl:attribute>
 				<xsl:attribute name="value"><xsl:value-of select="$value/text()"/></xsl:attribute>
+				<xsl:if test="@appearance='compact'">
+					<xsl:attribute name="size"><xsl:value-of select="count(item)"/></xsl:attribute>
+					<xsl:attribute name="multiple"/>
+				</xsl:if>
 				<xsl:apply-templates select="$item" mode="simpleselect"/>
 			</xsl:element>
 			<xsl:element name="span"><xsl:value-of select="$hint/text()"/></xsl:element>
