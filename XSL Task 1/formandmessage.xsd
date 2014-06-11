@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- edited with XMLSpy v2014 rel. 2 sp1 (x64) (http://www.altova.com) by Ivan (Home PC) -->
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:altova="http://www.altova.com/xml-schema-extensions">
+	<xsd:simpleType name="elementtype">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="string"/>
+			<xsd:enumeration value="boolean"/>
+			<xsd:enumeration value="integer"/>
+			<xsd:enumeration value="float"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 	<xsd:element name="payment">
 		<xsd:annotation>
 			<xsd:documentation>Корневой элемент</xsd:documentation>
@@ -20,6 +28,7 @@
 													<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
 													<xsd:element name="value" minOccurs="0"/>
 												</xsd:sequence>
+												<xsd:attribute name="typeelement" type="elementtype"/>
 												<xsd:attribute name="ref" type="xsd:string" use="required"/>
 											</xsd:complexType>
 										</xsd:element>
@@ -28,7 +37,7 @@
 												<xsd:sequence>
 													<xsd:element name="label" minOccurs="0"/>
 													<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
-													<xsd:element name="item" maxOccurs="unbounded">
+													<xsd:element name="item" minOccurs="0" maxOccurs="unbounded">
 														<xsd:complexType>
 															<xsd:sequence>
 																<xsd:element name="label" type="xsd:string"/>
@@ -40,6 +49,7 @@
 												</xsd:sequence>
 												<xsd:attribute name="ref" type="xsd:string" use="required"/>
 												<xsd:attribute name="appearance" type="xsd:string"/>
+												<xsd:attribute name="typeelement" type="elementtype"/>
 											</xsd:complexType>
 										</xsd:element>
 										<xsd:element name="submit">
@@ -48,6 +58,7 @@
 													<xsd:element name="label" type="xsd:string"/>
 												</xsd:sequence>
 												<xsd:attribute name="submission" use="required"/>
+												<xsd:attribute name="typeelement" type="elementtype"/>
 											</xsd:complexType>
 										</xsd:element>
 										<xsd:element name="group" minOccurs="0" maxOccurs="unbounded">
@@ -62,6 +73,7 @@
 																<xsd:element name="value" minOccurs="0"/>
 															</xsd:sequence>
 															<xsd:attribute name="ref" type="xsd:string"/>
+															<xsd:attribute name="typeelement" type="elementtype"/>
 														</xsd:complexType>
 													</xsd:element>
 													<xsd:element name="select" minOccurs="0" maxOccurs="unbounded">
@@ -69,7 +81,7 @@
 															<xsd:sequence>
 																<xsd:element name="label" minOccurs="0"/>
 																<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
-																<xsd:element name="item" maxOccurs="unbounded">
+																<xsd:element name="item" minOccurs="0" maxOccurs="unbounded">
 																	<xsd:complexType>
 																		<xsd:sequence>
 																			<xsd:element name="label" type="xsd:string"/>
@@ -81,10 +93,12 @@
 															</xsd:sequence>
 															<xsd:attribute name="ref" type="xsd:string" use="required"/>
 															<xsd:attribute name="appearance" type="xsd:string"/>
+															<xsd:attribute name="typeelement" type="elementtype"/>
 														</xsd:complexType>
 													</xsd:element>
 												</xsd:choice>
 												<xsd:attribute name="class" type="xsd:string"/>
+												<xsd:attribute name="typeelement" type="elementtype"/>
 											</xsd:complexType>
 										</xsd:element>
 									</xsd:choice>

@@ -15,7 +15,7 @@
 			 <!-- предположительно все элементы в группе будут выводиться в одну строку-->
 			<group class="xf_group inrow all">
 				<label>Период</label>
-				<select ref="month">
+				<select ref="month" typeelement="string">
 					<hint>месяц</hint>
 					<item><label>Январь</label><value>01</value></item>
 					<item><label>Февраль</label><value>02</value></item>
@@ -40,7 +40,7 @@
 			<input ref="sum">
 				<label>Сумма</label>
 			</input>
-			<select ref="paymenttype" appearance="full">
+			<select ref="paymenttype" appearance="full" >
 			  <label>Тип платежа</label>
 			   <item>
 				  <label>Срочный</label><value>1</value>
@@ -48,6 +48,10 @@
 			   <item>
 				  <label>Отложенный</label><value>2</value>
 			   </item>
+			</select>
+			<select ref="attrcheck" typeelement="boolean">
+				<label>Чек бокс</label>
+				<value>true</value>
 			</select>
 			<submit submission="submit">
 				<label>Submit</label>
