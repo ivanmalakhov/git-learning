@@ -27,7 +27,11 @@
 													<xsd:element name="label" type="xsd:string"/>
 													<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
 													<xsd:element name="value" minOccurs="0"/>
+													<xsd:element name="pattern" type="xsd:string" minOccurs="0"/>
 												</xsd:sequence>
+												<xsd:attribute name="maxlength" type="xsd:integer"/>
+												<xsd:attribute name="max" type="xsd:float"/>
+												<xsd:attribute name="min" type="xsd:float"/>
 												<xsd:attribute name="typeelement" type="elementtype"/>
 												<xsd:attribute name="ref" type="xsd:string" use="required"/>
 											</xsd:complexType>
@@ -71,9 +75,13 @@
 																<xsd:element name="label" type="xsd:string" minOccurs="0"/>
 																<xsd:element name="hint" type="xsd:string" minOccurs="0"/>
 																<xsd:element name="value" minOccurs="0"/>
+																<xsd:element name="pattern" type="xsd:string" minOccurs="0"/>
 															</xsd:sequence>
 															<xsd:attribute name="ref" type="xsd:string"/>
 															<xsd:attribute name="typeelement" type="elementtype"/>
+															<xsd:attribute name="max" type="xsd:float"/>
+															<xsd:attribute name="min" type="xsd:float"/>
+															<xsd:attribute name="maxlength" type="xsd:integer"/>
 														</xsd:complexType>
 													</xsd:element>
 													<xsd:element name="select" minOccurs="0" maxOccurs="unbounded">

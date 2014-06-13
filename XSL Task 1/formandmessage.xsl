@@ -8,14 +8,12 @@
 			<head>
 				<title>Payment</title>
 				<link rel="stylesheet" type="text/css" href="formandmessage.css" />
+				<script type="text/javascript" src="formandmessage.js"/>	
 			</head>
 			<body>
 				<xsl:element name="div">				
 					<xsl:attribute name="class">main</xsl:attribute>
-					<xsl:element name="div">				
-						<xsl:attribute name="class">form</xsl:attribute>
 						<xsl:apply-templates select="/payment/forms/form[@id=$scid]"/><!-- Адресное обращение. обращаемся к конкретной форме-->
-					</xsl:element>
 					<xsl:element name="div">				
 						<xsl:attribute name="class">messages</xsl:attribute>
 						<xsl:apply-templates select="/payment/messages/message[form_id=$scid]"> <!--  Адресное образщение к сообщения к сообщениям для конкретной формы-->
@@ -27,30 +25,45 @@
 		</html>
 	</xsl:template>
 	<xsl:template match="form">
-		<xsl:element name="div">
-			<xsl:attribute name="class">formhead</xsl:attribute>
-			<xsl:text>Form</xsl:text>
-		</xsl:element>
 		<xsl:element name="form">
-			<xsl:attribute name="class">mform</xsl:attribute>
-			<xsl:attribute name="name">mform</xsl:attribute>
-			<xsl:attribute name="action"><xsl:text disable-output-escaping="yes">/formandmessage/?scid=step_2</xsl:text></xsl:attribute>
+			<xsl:attribute name="name">frmPayment</xsl:attribute>
+			<xsl:attribute name="id">frmPayment</xsl:attribute>
 			<xsl:attribute name="method">post</xsl:attribute>
-			<xsl:apply-templates/>
+			<xsl:element name="div">				
+				<xsl:attribute name="class">xf-form</xsl:attribute>
+				<xsl:apply-templates/>
+			</xsl:element>
 		</xsl:element>
+	</xsl:template>
+	<xsl:template match="group">
+	<xsl:element name="div">
+		<xsl:attribute name="class"><xsl:text>xf-group</xsl:text></xsl:attribute>
+		<xsl:apply-templates/>		
+	</xsl:element>
 	</xsl:template>
 	<xsl:template match="input">
 		<xsl:element name="div">
-			<xsl:call-template name="simpleinput">
-				<xsl:with-param name="id" select="@ref"/>
-				<xsl:with-param name="label" select="label"/>
-				<xsl:with-param name="value" select="value"/>
-				<xsl:with-param name="hint" select="hint"/>				
-			</xsl:call-template>
+			<xsl:attribute name="class"><xsl:text>xf-field</xsl:text></xsl:attribute>
+			<xsl:apply-templates select="label">
+				<xsl:with-param name="for"><xsl:value-of select="@ref"/></xsl:with-param>
+			</xsl:apply-templates>
+			<xsl:element name="div">
+				<xsl:attribute name="class"><xsl:text>xf-elementhint</xsl:text></xsl:attribute>
+				<xsl:element name="input">
+					<xsl:attribute name="id"><xsl:value-of select="@ref"/></xsl:attribute>
+					<xsl:attribute name="name"><xsl:value-of select="@ref"/></xsl:attribute>
+					<xsl:attribute name="value"><xsl:value-of select="value/text()"/></xsl:attribute>
+					<xsl:attribute name="type"><xsl:text>text</xsl:text></xsl:attribute>
+					<xsl:attribute name="class"><xsl:text>xf_input xf_input_text</xsl:text></xsl:attribute>
+					<xsl:attribute name="pattern"><xsl:value-of select="pattern"/></xsl:attribute>
+				</xsl:element>
+				<xsl:apply-templates select="hint"/>
+			</xsl:element>
 		</xsl:element>
 	</xsl:template>
 	<xsl:template match="select">
 		<xsl:element name="div">
+			<xsl:attribute name="class"><xsl:text>xf-field</xsl:text></xsl:attribute>
 			<xsl:choose>
 				<xsl:when test="@typeelement='boolean'">
 					<xsl:call-template name="simplecheckbox">
@@ -77,37 +90,44 @@
 		<xsl:param name="label"/>
 		<xsl:param name="value"/>
 		<xsl:param name="hint"/>
-		<xsl:param name="item"/>		
-		<xsl:element name="label">
-			<xsl:attribute name="for" ><xsl:value-of select="$id"/></xsl:attribute>
-			<xsl:value-of select="$label/text()"/>
-		</xsl:element>
-			<xsl:element name="select">
-				<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
-				<xsl:attribute name="name"><xsl:value-of select="$id"/></xsl:attribute>
-				<xsl:attribute name="value"><xsl:value-of select="$value/text()"/></xsl:attribute>
-				<xsl:if test="@appearance='compact'">
-					<xsl:attribute name="size"><xsl:value-of select="count(item)"/></xsl:attribute>
-					<xsl:attribute name="multiple"/>
-				</xsl:if>
-				<xsl:apply-templates select="$item" mode="simpleselect"/>
+		<xsl:param name="item"/>
+		<xsl:param name="typeelement"/>		
+		<xsl:apply-templates select="$label">
+			<xsl:with-param name="for"><xsl:value-of select="$id"/></xsl:with-param>
+		</xsl:apply-templates>
+			<xsl:element name="div">
+				<xsl:attribute name="class"><xsl:text>xf-elementhint</xsl:text></xsl:attribute>
+				<xsl:element name="select">
+					<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
+					<xsl:attribute name="name"><xsl:value-of select="$id"/></xsl:attribute>
+					<xsl:attribute name="value"><xsl:value-of select="$value/text()"/></xsl:attribute>
+					<xsl:attribute name="class"><xsl:text>xf-select</xsl:text></xsl:attribute>
+					<xsl:if test="@appearance='compact'">
+						<xsl:attribute name="size"><xsl:value-of select="count(item)"/></xsl:attribute>
+					</xsl:if>
+					<xsl:apply-templates select="$item" mode="simpleselect"/>
+				</xsl:element>
+				<xsl:apply-templates select="$hint"/>
 			</xsl:element>
-			<xsl:element name="span"><xsl:value-of select="$hint/text()"/></xsl:element>
 	</xsl:template>
 	<xsl:template name="simplecheckbox">
 		<xsl:param name="id"/>
 		<xsl:param name="label"/>
 		<xsl:param name="value"/>
-		<xsl:param name="hint"/>		
-			<xsl:element name="input">
-				<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
-				<xsl:attribute name="name"><xsl:value-of select="$id"/></xsl:attribute>
-				<xsl:attribute name="type"><xsl:text>checkbox</xsl:text></xsl:attribute>
-				<xsl:if test="$value/text()= 'true'">
-					<xsl:attribute name="checked"><xsl:text>checked</xsl:text></xsl:attribute>
-				</xsl:if>
+		<xsl:param name="hint"/>
+			<xsl:element name="label">
+				<xsl:attribute name="class"><xsl:text>xf-label</xsl:text></xsl:attribute>
+				<xsl:element name="input">
+					<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
+					<xsl:attribute name="name"><xsl:value-of select="$id"/></xsl:attribute>
+					<xsl:attribute name="type"><xsl:text>checkbox</xsl:text></xsl:attribute>
+					<xsl:attribute name="class"><xsl:text>xf-input checkbox</xsl:text></xsl:attribute>
+					<xsl:if test="$value/text()= 'true'">
+						<xsl:attribute name="checked"><xsl:text>checked</xsl:text></xsl:attribute>
+					</xsl:if>
+				</xsl:element>
+				<xsl:value-of select="$label"/>
 			</xsl:element>
-			<xsl:element name="span"><xsl:value-of select="$label"/></xsl:element>
 	</xsl:template>
 	<xsl:template match="item" mode="simpleselect">
 		<xsl:element name="option">
@@ -115,29 +135,30 @@
 			<xsl:value-of select="label/text()"/>
 		</xsl:element>
 	</xsl:template>
-	<xsl:template name="simpleinput">
-		<xsl:param name="id"/>
-		<xsl:param name="label"/>
-		<xsl:param name="value"/>
-		<xsl:param name="hint"/>
-		<xsl:element name="label">
-			<xsl:attribute name="for" ><xsl:value-of select="$id"/></xsl:attribute>
-			<xsl:value-of select="$label/text()"/>
-		</xsl:element>
+	<xsl:template match="submit">
+		<xsl:element name="div">
+			<xsl:attribute name="class"><xsl:text>xf-field</xsl:text></xsl:attribute>	
 			<xsl:element name="input">
-				<xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
-				<xsl:attribute name="name"><xsl:value-of select="$id"/></xsl:attribute>
-				<xsl:attribute name="value"><xsl:value-of select="$value/text()"/></xsl:attribute>
+				<xsl:attribute name="type"><xsl:value-of select="@submission"/></xsl:attribute>
+				<xsl:attribute name="class"><xsl:text>xf-submit</xsl:text></xsl:attribute>
 			</xsl:element>
-			<xsl:element name="span"><xsl:value-of select="$hint/text()"/></xsl:element>
+		</xsl:element>
 	</xsl:template>
-<!--	<xsl:template match="label" mode="input">
-		<xsl:param name="for"/>
-		<xsl:element name="label">
-			<xsl:attribute name="for" ><xsl:text><xsl:value-of select="$for"/></xsl:text></xsl:attribute>
+	<xsl:template match="hint">
+		<xsl:element name="br"/>
+		<xsl:element name="span">
+			<xsl:attribute name="class"><xsl:text>xf-hint</xsl:text></xsl:attribute>
 			<xsl:value-of select="text()"/>
 		</xsl:element>
-	</xsl:template>-->
+	</xsl:template>
+	<xsl:template match="label">
+		<xsl:param name="for"/>
+		<xsl:element name="label">
+			<xsl:attribute name="for" ><xsl:value-of select="$for"/></xsl:attribute>
+			<xsl:attribute name="class"><xsl:text>xf-label</xsl:text></xsl:attribute>
+			<xsl:value-of select="text()"/>
+		</xsl:element>
+	</xsl:template>
 	<xsl:template match="message">
 		<xsl:element name="div">
 			<xsl:attribute name="class" >

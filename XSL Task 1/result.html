@@ -3,75 +3,87 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Payment</title>
 		<link rel="stylesheet" type="text/css" href="formandmessage.css">
+		<script type="text/javascript" src="formandmessage.js"></script>
 	</head>
 	<body>
 		<div class="main">
-			<div class="form">
-				<div class="formhead">Form</div>
-				<form class="mform" name="mform" action="/formandmessage/?scid=step_2" method="post">
-			<div>
-						<label for="FormComment">Название</label>
-						<input id="FormComment" name="FormComment" value="Коммунальные услуги в Санкт-Петербурге (ВЦКП)">
-							<span></span>
-						</input>
+			<form name="frmPayment" id="frmPayment" method="post">
+				<div class="xf-form">
+			<div class="xf-field">
+						<label for="FormComment" class="xf-label">Название</label>
+						<div class="xf-elementhint">
+							<input id="FormComment" name="FormComment" value="Коммунальные услуги в Санкт-Петербурге (ВЦКП)" type="text" class="xf_input xf_input_text" pattern="">
+						</div>
 					</div>
-			<div>
-						<label for="TempAccount">Лицевой счет</label>
-						<input id="TempAccount" name="TempAccount" value="">
-							<span>9 цифр</span>
-						</input>
+			<div class="xf-field">
+						<label for="TempAccount" class="xf-label">Лицевой счет</label>
+						<div class="xf-elementhint">
+							<input id="TempAccount" name="TempAccount" value="" type="text" class="xf_input xf_input_text" pattern="^[0-9]{9}">
+							<br>
+							<span class="xf-hint">9 цифр</span>
+						</div>
 					</div>
 			 
-			
-				Период
-				
-					месяц
-					Январь01
-					Февраль02
-					Март03
-					Апрель04
-					Май05
-					Июнь06
-					Июль07
-					Август08
-					Сентябрь09
-					Октябрь10
-					Ноябрь11
-					Декабрь12
-				
-				<div>
-						<label for="year"></label>
-						<input id="year" name="year" value="">
-							<span>год</span>
-						</input>
-					</div>
-			
-			<div>
-						<label for="peni">Пени</label>
-						<input id="peni" name="peni" value="">
-							<span></span>
-						</input>
-					</div>
-			<div>
-						<label for="sum">Сумма</label>
-						<input id="sum" name="sum" value="">
-							<span></span>
-						</input>
-					</div>
-			
-			  Тип платежа
-			   
-				  Срочный1
-			   
-			   
-				  Отложенный2
-			   
-			
-			
-				Submit
-			
-		</form>
+			<div class="xf-group">
+				<label for="" class="xf-label">Период</label>
+				<div class="xf-field">
+							<div class="xf-elementhint">
+								<select id="month" name="month" value="" class="xf-select">
+									<option value="01">Январь</option>
+									<option value="02">Февраль</option>
+									<option value="03">Март</option>
+									<option value="04">Апрель</option>
+									<option value="05">Май</option>
+									<option value="06">Июнь</option>
+									<option value="07">Июль</option>
+									<option value="08">Август</option>
+									<option value="09">Сентябрь</option>
+									<option value="10">Октябрь</option>
+									<option value="11">Ноябрь</option>
+									<option value="12">Декабрь</option>
+								</select>
+								<br>
+								<span class="xf-hint">месяц</span>
+							</div>
+						</div>
+				<div class="xf-field">
+							<div class="xf-elementhint">
+								<input id="year" name="year" value="" type="text" class="xf_input xf_input_text" pattern="">
+								<br>
+								<span class="xf-hint">год</span>
+							</div>
+						</div>
 			</div>
+			<div class="xf-field">
+						<label for="peni" class="xf-label">Пени</label>
+						<div class="xf-elementhint">
+							<input id="peni" name="peni" value="0.00" type="text" class="xf_input xf_input_text" pattern="">
+						</div>
+					</div>
+			<div class="xf-field">
+						<label for="sum" class="xf-label">Сумма</label>
+						<div class="xf-elementhint">
+							<input id="sum" name="sum" value="0.00" type="text" class="xf_input xf_input_text" pattern="">
+						</div>
+					</div>
+			<div class="xf-field">
+						<label for="paymenttype" class="xf-label">Тип платежа</label>
+						<div class="xf-elementhint">
+							<select id="paymenttype" name="paymenttype" value="" class="xf-select" size="2">
+								<option value="1">Срочный</option>
+								<option value="2">Отложенный</option>
+							</select>
+						</div>
+					</div>
+			<div class="xf-field">
+						<label class="xf-label">
+							<input id="attrcheck" name="attrcheck" type="checkbox" class="xf-input checkbox" checked>Регулярный платеж</label>
+					</div>
+			<div class="xf-field">
+						<input type="submit" class="xf-submit">
+					</div>
+		</div>
+			</form>
 			<div class="messages">
 				<div class="critical">
 					<div class="ttl">Critical message</div>

@@ -4,13 +4,14 @@
 	<forms>
 		<!-- Задание 3-->
 		<form class="paymentform" id="step_1">
-			<input ref="FormComment">
+			<input ref="FormComment" typeelement="string">
 				<label>Название</label>
 				<value>Коммунальные услуги в Санкт-Петербурге (ВЦКП)</value>
 			</input>
-			<input ref="TempAccount">
+			<input ref="TempAccount" typeelement="string" maxlength="9">
 				<label>Лицевой счет</label>
 				<hint>9 цифр</hint>
+				<pattern>^[0-9]{9}</pattern>
 			</input>
 			 <!-- предположительно все элементы в группе будут выводиться в одну строку-->
 			<group class="xf_group inrow all">
@@ -34,13 +35,15 @@
 					<hint>год</hint>
 				</input>
 			</group>
-			<input ref="peni">
+			<input ref="peni" typeelement="float" min="0" max="999999.99">
 				<label>Пени</label>
+				<value>0.00</value>
 			</input>
-			<input ref="sum">
+			<input ref="sum" typeelement="float" min="0" max="999999.99">
 				<label>Сумма</label>
+				<value>0.00</value>
 			</input>
-			<select ref="paymenttype" appearance="full" >
+			<select ref="paymenttype" appearance="compact" >
 			  <label>Тип платежа</label>
 			   <item>
 				  <label>Срочный</label><value>1</value>
@@ -50,7 +53,7 @@
 			   </item>
 			</select>
 			<select ref="attrcheck" typeelement="boolean">
-				<label>Чек бокс</label>
+				<label>Регулярный платеж</label>
 				<value>true</value>
 			</select>
 			<submit submission="submit">
