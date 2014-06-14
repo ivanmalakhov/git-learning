@@ -54,13 +54,25 @@
 					</xsl:call-template>
 				</xsl:when>
 				<xsl:otherwise>
-					<xsl:call-template name="simpleselect">
-						<xsl:with-param name="id" select="@id"/>
-						<xsl:with-param name="label" select="label"/>
-						<xsl:with-param name="value" select="value"/>
-						<xsl:with-param name="hint" select="hint"/>				
-						<xsl:with-param name="item" select="item"/>				
-					</xsl:call-template>
+					<xsl:apply-templates select="label">
+						<xsl:with-param name="for"><xsl:value-of select="@id"/></xsl:with-param>
+					</xsl:apply-templates>
+						<xsl:element name="div">
+							<xsl:attribute name="class"><xsl:text>xf-elementhint</xsl:text></xsl:attribute>
+							<xsl:element name="select">
+								<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+								<xsl:attribute name="name"><xsl:value-of select="@id"/></xsl:attribute>
+								<xsl:attribute name="value"><xsl:value-of select="value/text()"/></xsl:attribute>
+								<xsl:attribute name="class"><xsl:text>xf-select</xsl:text></xsl:attribute>
+								<xsl:if test="@appearance='compact'">
+									<xsl:attribute name="size"><xsl:value-of select="count(item)"/></xsl:attribute>
+								</xsl:if>
+								<xsl:if test="@required"><xsl:attribute name="data-required"><xsl:value-of select="@required"/></xsl:attribute></xsl:if>	
+								<xsl:if test="@error"><xsl:attribute name="data-error"><xsl:value-of select="@error"/></xsl:attribute></xsl:if>
+								<xsl:apply-templates select="item" mode="simpleselect"/>
+							</xsl:element>
+							<xsl:apply-templates select="hint"/>
+						</xsl:element>
 				</xsl:otherwise>
 			</xsl:choose>
 		</xsl:element>
@@ -85,6 +97,8 @@
 					<xsl:if test="@appearance='compact'">
 						<xsl:attribute name="size"><xsl:value-of select="count(item)"/></xsl:attribute>
 					</xsl:if>
+					<xsl:if test="@required"><xsl:attribute name="data-required"><xsl:value-of select="@required"/></xsl:attribute></xsl:if>	
+					<xsl:if test="@error"><xsl:attribute name="data-error"><xsl:value-of select="@error"/></xsl:attribute></xsl:if>
 					<xsl:apply-templates select="$item" mode="simpleselect"/>
 				</xsl:element>
 				<xsl:apply-templates select="$hint"/>

@@ -20,7 +20,7 @@
 			<div class="xf-field">
 						<label for="tempAccount" class="xf-label">Лицевой счет</label>
 						<div class="xf-elementhint">
-							<input id="tempAccount" name="tempAccount" value="" type="text" class="xf_input xf_input_text" data-length="9" data-regexp="([1-9])+{9}" data-required="true" data-error="Какое то там сообщение">
+							<input id="tempAccount" name="tempAccount" value="" type="text" class="xf_input xf_input_text" data-length="9" data-regexp="([1-9]){9}" data-required="true" data-error="Какое то там сообщение">
 							<br>
 							<span class="xf-hint">9 цифр</span>
 						</div>
@@ -30,7 +30,7 @@
 				<label for="" class="xf-label">Период</label>
 				<div class="xf-field">
 							<div class="xf-elementhint">
-								<select id="month" name="month" value="" class="xf-select">
+								<select id="month" name="month" value="" class="xf-select" data-required="true" data-error="Укажите месяц">
 									<option value="01">Январь</option>
 									<option value="02">Февраль</option>
 									<option value="03">Март</option>
@@ -50,7 +50,7 @@
 						</div>
 				<div class="xf-field">
 							<div class="xf-elementhint">
-								<input id="year" name="year" value="" type="text" class="xf_input xf_input_text" data-required="true">
+								<input id="year" name="year" value="" type="text" class="xf_input xf_input_text" data-length="4" data-regexp="([1-9]){4}" data-required="true" data-error="Год должен быть заполнен. 4 цифры">
 								<br>
 								<span class="xf-hint">год</span>
 							</div>
@@ -59,19 +59,19 @@
 			<div class="xf-field">
 						<label for="peni" class="xf-label">Пени</label>
 						<div class="xf-elementhint">
-							<input id="peni" name="peni" value="0.00" type="text" class="xf_input xf_input_text" data-max="999999.99" data-min="0" data-required="false">
+							<input id="peni" name="peni" value="0.00" type="text" class="xf_input xf_input_text" data-max="200" data-min="0" data-required="false" data-error="Сумма пени указанна не верно">
 						</div>
 					</div>
 			<div class="xf-field">
 						<label for="sum" class="xf-label">Сумма</label>
 						<div class="xf-elementhint">
-							<input id="sum" name="sum" value="0.00" type="text" class="xf_input xf_input_text" data-max="999999.99" data-min="0" data-required="true" data-error="Ошибочка вышла">
+							<input id="sum" name="sum" value="0.00" type="text" class="xf_input xf_input_text" data-max="999999.99" data-min="0" data-required="true" data-error="Сумма платежа указанна не верно!">
 						</div>
 					</div>
 			<div class="xf-field">
 						<label for="paymenttype" class="xf-label">Тип платежа</label>
 						<div class="xf-elementhint">
-							<select id="paymenttype" name="paymenttype" value="" class="xf-select" size="2">
+							<select id="paymenttype" name="paymenttype" value="" class="xf-select" size="2" data-required="true" data-error="Укажите тип платежа">
 								<option value="1">Срочный</option>
 								<option value="2">Отложенный</option>
 							</select>

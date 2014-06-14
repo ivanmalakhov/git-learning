@@ -55,6 +55,8 @@
 													<xsd:element name="value" minOccurs="0"/>
 													<xsd:element name="error-message" type="xsd:string" minOccurs="0"/>
 												</xsd:sequence>
+												<xsd:attribute name="error"/>
+												<xsd:attribute name="required" type="xsd:boolean" use="required"/>
 												<xsd:attribute name="id" type="xsd:string" use="required"/>
 												<xsd:attribute name="appearance" type="xsd:string"/>
 												<xsd:attribute name="typeelement" type="elementtype"/>
@@ -111,6 +113,8 @@
 															<xsd:attribute name="id" type="xsd:string" use="required"/>
 															<xsd:attribute name="appearance" type="xsd:string"/>
 															<xsd:attribute name="typeelement" type="elementtype"/>
+															<xsd:attribute name="error"/>
+															<xsd:attribute name="required" type="xsd:boolean" use="required"/>
 														</xsd:complexType>
 													</xsd:element>
 												</xsd:choice>

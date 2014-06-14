@@ -8,14 +8,14 @@
 				<label>Название</label>
 				<value>Коммунальные услуги в Санкт-Петербурге (ВЦКП)</value>
 			</input>
-			<input id="tempAccount" typeelement="string" error="Какое то там сообщение" length="9" regexp="([1-9])+{9}" required="true">
+			<input id="tempAccount" typeelement="string" error="Какое то там сообщение" length="9" regexp="([1-9]){9}" required="true">
 				<label>Лицевой счет</label>
 				<hint>9 цифр</hint>
 			</input>
 			<!-- предположительно все элементы в группе будут выводиться в одну строку-->
 			<group class="xf_group inrow all">
 				<label>Период</label>
-				<select id="month" typeelement="string">
+				<select id="month" typeelement="string" required="true" error="Укажите месяц">
 					<hint>месяц</hint>
 					<item>
 						<label>Январь</label>
@@ -66,19 +66,19 @@
 						<value>12</value>
 					</item>
 				</select>
-				<input id="year" required="true">
+				<input id="year" required="true" error="Год должен быть заполнен. 4 цифры" length="4" regexp="([1-9]){4}" typeelement="string">
 					<hint>год</hint>
 				</input>
 			</group>
-			<input id="peni" typeelement="float" min="0" max="999999.99" required="false">
+			<input id="peni" typeelement="float" min="0" max="200" required="false" error="Сумма пени указанна не верно">
 				<label>Пени</label>
 				<value>0.00</value>
 			</input>
-			<input id="sum" typeelement="float" min="0" max="999999.99" error="Ошибочка вышла" required="true">
+			<input id="sum" typeelement="float" min="0" max="999999.99" error="Сумма платежа указанна не верно!" required="true">
 				<label>Сумма</label>
 				<value>0.00</value>
 			</input>
-			<select id="paymenttype" appearance="compact">
+			<select id="paymenttype" appearance="compact"  error="Укажите тип платежа" required="true">
 				<label>Тип платежа</label>
 				<item>
 					<label>Срочный</label>
@@ -89,7 +89,7 @@
 					<value>2</value>
 				</item>
 			</select>
-			<select id="attrcheck" typeelement="boolean">
+			<select id="attrcheck" typeelement="boolean" required="false">
 				<label>Регулярный платеж</label>
 				<value>true</value>
 			</select>

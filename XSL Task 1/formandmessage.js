@@ -1,77 +1,71 @@
-/*function prepareEventHandlers() {
-	
-  document.getElementById("frmPayment").onsubmit = function() {
-	  	
-  };
+var createNewMessage = function (element) {
+	var id = element.attr("id")+'-error';
+    $('body').append('<div id = "'+ id +'" class="validation-info"></div>');
+    var newmessage = $('#'+id);
+    var pos = element.offset(); 
+    newmessage.css({
+            top: pos.top-3,
+            left: pos.left+element.width()+15
+    });
+	return newmessage;
+};
+var seterrortype = function (newmessage, element, errormessage){
+	if ((typeof(errormessage)!="undefined")){
+		newmessage.removeClass('validation-correct').addClass('validation-error').html('←' + errormessage).show();
+		element.removeClass('validation-normal').addClass('validation-wrong');
+	} else {newmessage.remove();};
+	return newmessage;	
+}
+var setinfotype = function (newmessage, element){
+    newmessage.removeClass('validation-error').addClass('validation-correct').html('√').show();
+    element.removeClass('validation-wrong').addClass('validation-normal');	
+	return newmessage;
 }
 
-window.onload =  function() {
-  prepareEventHandlers();
-};
-*/
 $(document).ready(function(){
 
-	var jVal = {
-                'tempAccount' : function() {
-                        $('body').append('<div id="nameInfo" class="validation-info"></div>');
-                        var nameInfo = $('#nameInfo');
-                        var ele = $('#tempAccount');
-                        var pos = ele.offset();
-                        nameInfo.css({
-                                top: pos.top-3,
-                                left: pos.left+ele.width()+15
-                        });
-                        if(ele.val().length < 6) {
-                                jVal.errors = true;
-                                        nameInfo.removeClass('validation-correct').addClass('validation-error').html('← at least 6 characters').show();
-                                        ele.removeClass('validation-normal').addClass('validation-wrong');
-                        } else {
-                                        nameInfo.removeClass('validation-error').addClass('validation-correct').html('√').show();
-                                        ele.removeClass('validation-wrong').addClass('validation-normal');
-                        }
-                },
-				'sendIt' : function (){
-						if(!jVal.errors) {
-							$('#frmPayment').submit();
-						}
-				}
-        };
 		$('#send').click(function (){
 		        var obj = $('body');
 		        obj.animate({ scrollTop: $('#frmPayment').offset().top }, 750, function (){
 					 $(":input").each(function (i) {
 						 var currentelement = $(this);
+						 var error = false;
 						 var dataelement = currentelement.data();
-
-                         $('body').append('<div id="nameInfo" class="validation-info"></div>');
-                         var nameInfo = $('#nameInfo');
-                         var pos = currentelement.offset(); 
-                         nameInfo.css({
-                                 top: pos.top-3,
-                                 left: pos.left+currentelement.width()+15
-                         });	
-
+                         var newmessage = createNewMessage(currentelement);	
+						 // проверка на обязательность заполнения
 						 if (dataelement.required){
-							 if (currentelement.val() == ''){
-                                 nameInfo.removeClass('validation-correct').addClass('validation-error').html('← Пусто').show();
-                                 currentelement.removeClass('validation-normal').addClass('validation-wrong');
-							 }else{
-                                 nameInfo.removeClass('validation-error').addClass('validation-correct').html('√').show();
-                                 currentelement.removeClass('validation-wrong').addClass('validation-normal');
-							 	
-							 }
-							 
 						 }
-						 $.each(dataelement,function(j,val){
-							 alert(j + ";" + val);						 	
+						 $.each(dataelement,function(rules,value){
+							 if (rules == "required" ){
+								if (currentelement.val() == ''){
+									error = true;
+								};
+							 }else if(rules == "regexp"){
+								reg = new RegExp(value,"i") 
+								if(!reg.test(currentelement.val())){
+									error = true;
+								}
+							 }else if(rules == "length" ){
+								if (currentelement.val().length!=value){
+									error = true;
+								};							 	
+							 }else if(rules == "max" ){
+								 if (currentelement.val() > value){
+									 error = true;
+								 }
+							 }else if(rules == "min" ){
+								 if (currentelement.val() < value){
+									 error = true;
+								 }							 	
+							 } else{};					 	
 						 });
-						 alert($(this).val());
+						 if (error){
+							 seterrortype(newmessage,currentelement,dataelement.error)						 	
+						 }else{
+						//	 setinfotype(newmessage,currentelement)	//зеленые галочки						 							 	
+						 }
 					 });
-		                jVal.errors = false;
-		                jVal.tempAccount();
-		                jVal.sendIt();
 		        });
 		        return false;
 		});
-      //  $('#TempAccount').change(jVal.TempAccount);
 });
