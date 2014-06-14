@@ -80,3 +80,30 @@ ul {
 	font-size: 60%;
 	line-height :150%;
 }
+
+.validation-info {
+        text-align: left;
+        padding: 5px;
+        font-size: 11px;
+        color: #fff;
+        position: absolute;
+        display: none;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: -1px 1px 2px #a9a9a9;
+        -moz-box-shadow: -1px 1px 2px #a9a9a9;
+        box-shadow: -1px 1px 2px #a9a9a9;
+}
+.validation-error {
+        background: #f60000;
+        border: 3px solid #d50000;
+}
+.validation-correct {
+        background: #56d800;
+        border: 3px solid #008000;
+}
+.validation-wrong {
+        font-weight: bold;
+        color: #e90000;
+}

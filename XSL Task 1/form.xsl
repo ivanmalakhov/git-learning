@@ -21,17 +21,21 @@
 		<xsl:element name="div">
 			<xsl:attribute name="class"><xsl:text>xf-field</xsl:text></xsl:attribute>
 			<xsl:apply-templates select="label">
-				<xsl:with-param name="for"><xsl:value-of select="@ref"/></xsl:with-param>
+				<xsl:with-param name="for"><xsl:value-of select="@id"/></xsl:with-param>
 			</xsl:apply-templates>
 			<xsl:element name="div">
 				<xsl:attribute name="class"><xsl:text>xf-elementhint</xsl:text></xsl:attribute>
 				<xsl:element name="input">
-					<xsl:attribute name="id"><xsl:value-of select="@ref"/></xsl:attribute>
-					<xsl:attribute name="name"><xsl:value-of select="@ref"/></xsl:attribute>
+					<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+					<xsl:attribute name="name"><xsl:value-of select="@id"/></xsl:attribute>
 					<xsl:attribute name="value"><xsl:value-of select="value/text()"/></xsl:attribute>
 					<xsl:attribute name="type"><xsl:text>text</xsl:text></xsl:attribute>
 					<xsl:attribute name="class"><xsl:text>xf_input xf_input_text</xsl:text></xsl:attribute>
-					<xsl:attribute name="pattern"><xsl:value-of select="pattern"/></xsl:attribute>
+					<xsl:if test="@max"><xsl:attribute name="data-max"><xsl:value-of select="@max"/></xsl:attribute></xsl:if>
+					<xsl:if test="@min"><xsl:attribute name="data-min"><xsl:value-of select="@min"/></xsl:attribute></xsl:if>
+					<xsl:if test="@length"><xsl:attribute name="data-length"><xsl:value-of select="@length"/></xsl:attribute></xsl:if>
+					<xsl:if test="@regexp"><xsl:attribute name="data-regexp"><xsl:value-of select="@regexp"/></xsl:attribute></xsl:if>
+					<xsl:if test="@required"><xsl:attribute name="data-required"><xsl:value-of select="@required"/></xsl:attribute></xsl:if>					<xsl:if test="@error"><xsl:attribute name="data-error"><xsl:value-of select="@error"/></xsl:attribute></xsl:if>
 				</xsl:element>
 				<xsl:apply-templates select="hint"/>
 			</xsl:element>
@@ -43,7 +47,7 @@
 			<xsl:choose>
 				<xsl:when test="@typeelement='boolean'">
 					<xsl:call-template name="simplecheckbox">
-						<xsl:with-param name="id" select="@ref"/>
+						<xsl:with-param name="id" select="@id"/>
 						<xsl:with-param name="label" select="label"/>
 						<xsl:with-param name="value" select="value"/>
 						<xsl:with-param name="hint" select="hint"/>				
@@ -51,7 +55,7 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:call-template name="simpleselect">
-						<xsl:with-param name="id" select="@ref"/>
+						<xsl:with-param name="id" select="@id"/>
 						<xsl:with-param name="label" select="label"/>
 						<xsl:with-param name="value" select="value"/>
 						<xsl:with-param name="hint" select="hint"/>				
@@ -117,6 +121,8 @@
 			<xsl:element name="input">
 				<xsl:attribute name="type"><xsl:value-of select="@submission"/></xsl:attribute>
 				<xsl:attribute name="class"><xsl:text>xf-submit</xsl:text></xsl:attribute>
+				<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+				<xsl:attribute name="name"><xsl:value-of select="@id"/></xsl:attribute>
 			</xsl:element>
 		</xsl:element>
 	</xsl:template>

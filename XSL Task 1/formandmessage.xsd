@@ -29,11 +29,14 @@
 													<xsd:element name="value" minOccurs="0"/>
 													<xsd:element name="pattern" type="xsd:string" minOccurs="0"/>
 												</xsd:sequence>
-												<xsd:attribute name="maxlength" type="xsd:integer"/>
+												<xsd:attribute name="error"/>
+												<xsd:attribute name="required" type="xsd:boolean" use="required"/>
+												<xsd:attribute name="regexp" type="xsd:string"/>
+												<xsd:attribute name="length" type="xsd:integer"/>
 												<xsd:attribute name="max" type="xsd:float"/>
 												<xsd:attribute name="min" type="xsd:float"/>
 												<xsd:attribute name="typeelement" type="elementtype"/>
-												<xsd:attribute name="ref" type="xsd:string" use="required"/>
+												<xsd:attribute name="id" type="xsd:string" use="required"/>
 											</xsd:complexType>
 										</xsd:element>
 										<xsd:element name="select" minOccurs="0" maxOccurs="unbounded">
@@ -50,8 +53,9 @@
 														</xsd:complexType>
 													</xsd:element>
 													<xsd:element name="value" minOccurs="0"/>
+													<xsd:element name="error-message" type="xsd:string" minOccurs="0"/>
 												</xsd:sequence>
-												<xsd:attribute name="ref" type="xsd:string" use="required"/>
+												<xsd:attribute name="id" type="xsd:string" use="required"/>
 												<xsd:attribute name="appearance" type="xsd:string"/>
 												<xsd:attribute name="typeelement" type="elementtype"/>
 											</xsd:complexType>
@@ -61,6 +65,7 @@
 												<xsd:sequence>
 													<xsd:element name="label" type="xsd:string"/>
 												</xsd:sequence>
+												<xsd:attribute name="id" type="xsd:string" use="required"/>
 												<xsd:attribute name="submission" use="required"/>
 												<xsd:attribute name="typeelement" type="elementtype"/>
 											</xsd:complexType>
@@ -77,11 +82,14 @@
 																<xsd:element name="value" minOccurs="0"/>
 																<xsd:element name="pattern" type="xsd:string" minOccurs="0"/>
 															</xsd:sequence>
-															<xsd:attribute name="ref" type="xsd:string"/>
+															<xsd:attribute name="id" type="xsd:string" use="required"/>
 															<xsd:attribute name="typeelement" type="elementtype"/>
+															<xsd:attribute name="error"/>
+															<xsd:attribute name="required" type="xsd:boolean" use="required"/>
+															<xsd:attribute name="regexp" type="xsd:string"/>
+															<xsd:attribute name="length" type="xsd:integer"/>
 															<xsd:attribute name="max" type="xsd:float"/>
 															<xsd:attribute name="min" type="xsd:float"/>
-															<xsd:attribute name="maxlength" type="xsd:integer"/>
 														</xsd:complexType>
 													</xsd:element>
 													<xsd:element name="select" minOccurs="0" maxOccurs="unbounded">
@@ -98,8 +106,9 @@
 																	</xsd:complexType>
 																</xsd:element>
 																<xsd:element name="value" minOccurs="0"/>
+																<xsd:element name="error-message" type="xsd:string" minOccurs="0"/>
 															</xsd:sequence>
-															<xsd:attribute name="ref" type="xsd:string" use="required"/>
+															<xsd:attribute name="id" type="xsd:string" use="required"/>
 															<xsd:attribute name="appearance" type="xsd:string"/>
 															<xsd:attribute name="typeelement" type="elementtype"/>
 														</xsd:complexType>

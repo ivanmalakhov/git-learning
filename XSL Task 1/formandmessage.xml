@@ -1,62 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="formandmessage.xsl"?>
+<?xml-stylesheet type="text/xsl" hid="formandmessage.xsl"?>
 <payment paymentname="MTS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="formandmessage.xsd">
 	<forms>
 		<!-- Задание 3-->
 		<form class="paymentform" id="step_1">
-			<input ref="FormComment" typeelement="string">
+			<input id="formComment" typeelement="string" required="true">
 				<label>Название</label>
 				<value>Коммунальные услуги в Санкт-Петербурге (ВЦКП)</value>
 			</input>
-			<input ref="TempAccount" typeelement="string" maxlength="9">
+			<input id="tempAccount" typeelement="string" error="Какое то там сообщение" length="9" regexp="([1-9])+{9}" required="true">
 				<label>Лицевой счет</label>
 				<hint>9 цифр</hint>
-				<pattern>^[0-9]{9}</pattern>
 			</input>
-			 <!-- предположительно все элементы в группе будут выводиться в одну строку-->
+			<!-- предположительно все элементы в группе будут выводиться в одну строку-->
 			<group class="xf_group inrow all">
 				<label>Период</label>
-				<select ref="month" typeelement="string">
+				<select id="month" typeelement="string">
 					<hint>месяц</hint>
-					<item><label>Январь</label><value>01</value></item>
-					<item><label>Февраль</label><value>02</value></item>
-					<item><label>Март</label><value>03</value></item>
-					<item><label>Апрель</label><value>04</value></item>
-					<item><label>Май</label><value>05</value></item>
-					<item><label>Июнь</label><value>06</value></item>
-					<item><label>Июль</label><value>07</value></item>
-					<item><label>Август</label><value>08</value></item>
-					<item><label>Сентябрь</label><value>09</value></item>
-					<item><label>Октябрь</label><value>10</value></item>
-					<item><label>Ноябрь</label><value>11</value></item>
-					<item><label>Декабрь</label><value>12</value></item>
+					<item>
+						<label>Январь</label>
+						<value>01</value>
+					</item>
+					<item>
+						<label>Февраль</label>
+						<value>02</value>
+					</item>
+					<item>
+						<label>Март</label>
+						<value>03</value>
+					</item>
+					<item>
+						<label>Апрель</label>
+						<value>04</value>
+					</item>
+					<item>
+						<label>Май</label>
+						<value>05</value>
+					</item>
+					<item>
+						<label>Июнь</label>
+						<value>06</value>
+					</item>
+					<item>
+						<label>Июль</label>
+						<value>07</value>
+					</item>
+					<item>
+						<label>Август</label>
+						<value>08</value>
+					</item>
+					<item>
+						<label>Сентябрь</label>
+						<value>09</value>
+					</item>
+					<item>
+						<label>Октябрь</label>
+						<value>10</value>
+					</item>
+					<item>
+						<label>Ноябрь</label>
+						<value>11</value>
+					</item>
+					<item>
+						<label>Декабрь</label>
+						<value>12</value>
+					</item>
 				</select>
-				<input ref="year">
+				<input id="year" required="true">
 					<hint>год</hint>
 				</input>
 			</group>
-			<input ref="peni" typeelement="float" min="0" max="999999.99">
+			<input id="peni" typeelement="float" min="0" max="999999.99" required="false">
 				<label>Пени</label>
 				<value>0.00</value>
 			</input>
-			<input ref="sum" typeelement="float" min="0" max="999999.99">
+			<input id="sum" typeelement="float" min="0" max="999999.99" error="Ошибочка вышла" required="true">
 				<label>Сумма</label>
 				<value>0.00</value>
 			</input>
-			<select ref="paymenttype" appearance="compact" >
-			  <label>Тип платежа</label>
-			   <item>
-				  <label>Срочный</label><value>1</value>
-			   </item>
-			   <item>
-				  <label>Отложенный</label><value>2</value>
-			   </item>
+			<select id="paymenttype" appearance="compact">
+				<label>Тип платежа</label>
+				<item>
+					<label>Срочный</label>
+					<value>1</value>
+				</item>
+				<item>
+					<label>Отложенный</label>
+					<value>2</value>
+				</item>
 			</select>
-			<select ref="attrcheck" typeelement="boolean">
+			<select id="attrcheck" typeelement="boolean">
 				<label>Регулярный платеж</label>
 				<value>true</value>
 			</select>
-			<submit submission="submit">
+			<submit submission="submit" id="send">
 				<label>Submit</label>
 			</submit>
 		</form>

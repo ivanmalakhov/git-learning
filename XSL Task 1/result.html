@@ -12,20 +12,20 @@
 			<form name="frmPayment" id="frmPayment" method="post">
 				<div class="xf-form">
 			<div class="xf-field">
-						<label for="FormComment" class="xf-label">Название</label>
+						<label for="formComment" class="xf-label">Название</label>
 						<div class="xf-elementhint">
-							<input id="FormComment" name="FormComment" value="Коммунальные услуги в Санкт-Петербурге (ВЦКП)" type="text" class="xf_input xf_input_text" pattern="">
+							<input id="formComment" name="formComment" value="Коммунальные услуги в Санкт-Петербурге (ВЦКП)" type="text" class="xf_input xf_input_text" data-required="true">
 						</div>
 					</div>
 			<div class="xf-field">
-						<label for="TempAccount" class="xf-label">Лицевой счет</label>
+						<label for="tempAccount" class="xf-label">Лицевой счет</label>
 						<div class="xf-elementhint">
-							<input id="TempAccount" name="TempAccount" value="" type="text" class="xf_input xf_input_text" pattern="^[0-9]{9}">
+							<input id="tempAccount" name="tempAccount" value="" type="text" class="xf_input xf_input_text" data-length="9" data-regexp="([1-9])+{9}" data-required="true" data-error="Какое то там сообщение">
 							<br>
 							<span class="xf-hint">9 цифр</span>
 						</div>
 					</div>
-			 
+			
 			<div class="xf-group">
 				<label for="" class="xf-label">Период</label>
 				<div class="xf-field">
@@ -50,7 +50,7 @@
 						</div>
 				<div class="xf-field">
 							<div class="xf-elementhint">
-								<input id="year" name="year" value="" type="text" class="xf_input xf_input_text" pattern="">
+								<input id="year" name="year" value="" type="text" class="xf_input xf_input_text" data-required="true">
 								<br>
 								<span class="xf-hint">год</span>
 							</div>
@@ -59,13 +59,13 @@
 			<div class="xf-field">
 						<label for="peni" class="xf-label">Пени</label>
 						<div class="xf-elementhint">
-							<input id="peni" name="peni" value="0.00" type="text" class="xf_input xf_input_text" pattern="">
+							<input id="peni" name="peni" value="0.00" type="text" class="xf_input xf_input_text" data-max="999999.99" data-min="0" data-required="false">
 						</div>
 					</div>
 			<div class="xf-field">
 						<label for="sum" class="xf-label">Сумма</label>
 						<div class="xf-elementhint">
-							<input id="sum" name="sum" value="0.00" type="text" class="xf_input xf_input_text" pattern="">
+							<input id="sum" name="sum" value="0.00" type="text" class="xf_input xf_input_text" data-max="999999.99" data-min="0" data-required="true" data-error="Ошибочка вышла">
 						</div>
 					</div>
 			<div class="xf-field">
@@ -82,7 +82,7 @@
 							<input id="attrcheck" name="attrcheck" type="checkbox" class="xf-input checkbox" checked>Регулярный платеж</label>
 					</div>
 			<div class="xf-field">
-						<input type="submit" class="xf-submit">
+						<input type="submit" class="xf-submit" id="send" name="send">
 					</div>
 		</div>
 			</form>
