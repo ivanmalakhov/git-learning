@@ -17,8 +17,9 @@ var seterrortype = function (newmessage, element, errormessage){
 	return newmessage;	
 }
 var setinfotype = function (newmessage, element){
-    newmessage.removeClass('validation-error').addClass('validation-correct').html('√').show();
-    element.removeClass('validation-wrong').addClass('validation-normal');	
+//    newmessage.removeClass('validation-error').addClass('validation-correct').html('√').show();
+    element.removeClass('validation-wrong').addClass('validation-normal');
+	newmessage.remove();
 	return newmessage;
 }
 
@@ -62,7 +63,7 @@ $(document).ready(function(){
 						 if (error){
 							 seterrortype(newmessage,currentelement,dataelement.error)						 	
 						 }else{
-						//	 setinfotype(newmessage,currentelement)	//зеленые галочки						 							 	
+							 setinfotype(newmessage,currentelement)	//зеленые галочки						 							 	
 						 }
 					 });
 		        });

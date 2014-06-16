@@ -36,6 +36,9 @@ li {
 ul {
     padding-left: 1.5em;
 }
+.section {
+	
+}
 .info, .warning, .critical {
 	margin-bottom : 5px;
     padding-left: 3em;
@@ -104,6 +107,5 @@ ul {
         border: 3px solid #008000;
 }
 .validation-wrong {
-        font-weight: bold;
         color: #e90000;
 }

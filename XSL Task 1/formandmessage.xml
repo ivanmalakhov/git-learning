@@ -8,7 +8,7 @@
 				<label>Название</label>
 				<value>Коммунальные услуги в Санкт-Петербурге (ВЦКП)</value>
 			</input>
-			<input id="tempAccount" typeelement="string" error="Какое то там сообщение" length="9" regexp="([1-9]){9}" required="true">
+			<input id="tempAccount" typeelement="string" error="Неверно указан лицевой счет" length="9" regexp="^\d{9}$" required="true">
 				<label>Лицевой счет</label>
 				<hint>9 цифр</hint>
 			</input>
@@ -66,15 +66,15 @@
 						<value>12</value>
 					</item>
 				</select>
-				<input id="year" required="true" error="Год должен быть заполнен. 4 цифры" length="4" regexp="([1-9]){4}" typeelement="string">
+				<input id="year" required="true" error="Год должен быть заполнен. 4 цифры" length="4" regexp="^\d{4}$" typeelement="string">
 					<hint>год</hint>
 				</input>
 			</group>
-			<input id="peni" typeelement="float" min="0" max="200" required="false" error="Сумма пени указанна не верно">
+			<input id="peni" typeelement="float" min="0" max="200" required="false" error="Сумма пени указана неверно" regexp="(^[0-9]{1,8}|(^[0-9]{1,8}\.{0,1}[0-9]{1,2}))$">
 				<label>Пени</label>
 				<value>0.00</value>
 			</input>
-			<input id="sum" typeelement="float" min="0" max="999999.99" error="Сумма платежа указанна не верно!" required="true">
+			<input id="sum" typeelement="float" min="0" max="999999.99" error="Сумма платежа указанна неверно!" required="true" regexp="(^[0-9]{1,8}|(^[0-9]{1,8}\.{0,1}[0-9]{1,2}))$">
 				<label>Сумма</label>
 				<value>0.00</value>
 			</input>

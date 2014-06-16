@@ -27,7 +27,7 @@
 		</xsl:element>
 	</xsl:template>
 	<xsl:template match="section">
-		<xsl:element name="div">
+		<xsl:element name="p">
 			<xsl:attribute name="class">section</xsl:attribute>
 			<xsl:apply-templates/>
 		</xsl:element>

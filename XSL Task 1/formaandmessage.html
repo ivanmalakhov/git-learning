@@ -1,4 +1,4 @@
-<html>
+<html xmlns:fo="http://www.w3.org/1999/XSL/Format">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Payment</title>
@@ -8,11 +8,11 @@
 <body><div class="main">
 <form name="frmPayment" id="frmPayment" method="post"><div class="xf-form">
 			<div class="xf-field">
-<label for="formComment" class="xf-label">Название</label><div class="xf-elementhint"><input id="formComment" name="formComment" value="Коммунальные услуги в Санкт-Петербурге (ВЦКП)" type="text" class="xf_input xf_input_text" data-required="true"></div>
+<label for="formComment" class="xf-label">Название</label><div class="xf-elementhint"><input id="formComment" name="formComment" value="Коммунальные услуги в Санкт-Петербурге (ВЦКП)" type="text" class="xf_input" data-required="true"></div>
 </div>
 			<div class="xf-field">
 <label for="tempAccount" class="xf-label">Лицевой счет</label><div class="xf-elementhint">
-<input id="tempAccount" name="tempAccount" value="" type="text" class="xf_input xf_input_text" data-length="9" data-regexp="([1-9]){9}" data-required="true" data-error="Какое то там сообщение"><br><span class="xf-hint">9 цифр</span>
+<input id="tempAccount" name="tempAccount" value="" type="text" class="xf_input" data-length="9" data-regexp="^\d{9}$" data-required="true" data-error="Неверно указан лицевой счет"><br><span class="xf-hint">9 цифр</span>
 </div>
 </div>
 			
@@ -33,14 +33,14 @@
 <option value="12">Декабрь</option></select><br><span class="xf-hint">месяц</span>
 </div></div>
 				<div class="xf-field"><div class="xf-elementhint">
-<input id="year" name="year" value="" type="text" class="xf_input xf_input_text" data-length="4" data-regexp="([1-9]){4}" data-required="true" data-error="Год должен быть заполнен. 4 цифры"><br><span class="xf-hint">год</span>
+<input id="year" name="year" value="" type="text" class="xf_input" data-length="4" data-regexp="^\d{4}$" data-required="true" data-error="Год должен быть заполнен. 4 цифры"><br><span class="xf-hint">год</span>
 </div></div>
 			</div>
 			<div class="xf-field">
-<label for="peni" class="xf-label">Пени</label><div class="xf-elementhint"><input id="peni" name="peni" value="0.00" type="text" class="xf_input xf_input_text" data-max="200" data-min="0" data-required="false" data-error="Сумма пени указанна не верно"></div>
+<label for="peni" class="xf-label">Пени</label><div class="xf-elementhint"><input id="peni" name="peni" value="0.00" type="text" class="xf_input" data-max="200" data-min="0" data-regexp="(^[0-9]{1,8}|(^[0-9]{1,8}\.{0,1}[0-9]{1,2}))$" data-required="false" data-error="Сумма пени указана неверно"></div>
 </div>
 			<div class="xf-field">
-<label for="sum" class="xf-label">Сумма</label><div class="xf-elementhint"><input id="sum" name="sum" value="0.00" type="text" class="xf_input xf_input_text" data-max="999999.99" data-min="0" data-required="true" data-error="Сумма платежа указанна не верно!"></div>
+<label for="sum" class="xf-label">Сумма</label><div class="xf-elementhint"><input id="sum" name="sum" value="0.00" type="text" class="xf_input" data-max="999999.99" data-min="0" data-regexp="(^[0-9]{1,8}|(^[0-9]{1,8}\.{0,1}[0-9]{1,2}))$" data-required="true" data-error="Сумма платежа указанна неверно!"></div>
 </div>
 			<div class="xf-field">
 <label for="paymenttype" class="xf-label">Тип платежа</label><div class="xf-elementhint"><select id="paymenttype" name="paymenttype" value="" class="xf-select" size="2" data-required="true" data-error="Укажите тип платежа"><option value="1">Срочный</option>
@@ -52,50 +52,50 @@
 <div class="messages">
 <div class="critical">
 <div class="ttl">Заголовок срочного сообщения</div>
-<div class="section">
+<p class="section">
 				<div class="text">Срочное сообщени</div>
-				<ul xmlns:fo="http://www.w3.org/1999/XSL/Format">
+				<ul>
 <li>Срочно 1</li>
 <li>Срочно 2</li>
 </ul>
 				<div class="text">Продолжение срочного сообщения</div>
-			</div>
+			</p>
 </div>
 <div class="warning">
 <div class="ttl">Заголовок предупреждения</div>
-<div class="section">
+<p class="section">
 				<div class="text">Первое предупреждение</div>
-				<ul xmlns:fo="http://www.w3.org/1999/XSL/Format">
+				<ul>
 <li>Предуреждение 1</li>
 <li>Предупреждение 2</li>
 </ul>
-			</div>
-<div class="section">
+			</p>
+<p class="section">
 				<div class="text">Второе предупреждение</div>
-				<ul xmlns:fo="http://www.w3.org/1999/XSL/Format">
+				<ul>
 <li>Предупреждение 21</li>
 <li>Предупреждение 22</li>
 </ul>
-			</div>
+			</p>
 </div>
 <div class="info">
 <div class="ttl">Заголовок информационного сообщения</div>
-<div class="section">
+<p class="section">
 				<div class="text">Первая часть информационного сообщения</div>
-				<ul xmlns:fo="http://www.w3.org/1999/XSL/Format">
+				<ul>
 <li>Элемент 1</li>
 <li>Элемент 2</li>
 </ul>
 				<div class="text">Продолжение первой части информационного сообщения</div>
-			</div>
-<div class="section">
+			</p>
+<p class="section">
 				<div class="text">Вторая часть информационного сообщения</div>
-				<ul xmlns:fo="http://www.w3.org/1999/XSL/Format">
+				<ul>
 <li>Элемент 21</li>
 <li>Элемент 22</li>
 </ul>
 				<div class="text">Продолжение второй части информационного сообщения</div>
-			</div>
+			</p>
 </div>
 </div>
 </div></body>

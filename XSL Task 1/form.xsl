@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
 	<xsl:template match="form">
 		<xsl:element name="form">
 			<xsl:attribute name="name">frmPayment</xsl:attribute>
@@ -30,12 +30,16 @@
 					<xsl:attribute name="name"><xsl:value-of select="@id"/></xsl:attribute>
 					<xsl:attribute name="value"><xsl:value-of select="value/text()"/></xsl:attribute>
 					<xsl:attribute name="type"><xsl:text>text</xsl:text></xsl:attribute>
-					<xsl:attribute name="class"><xsl:text>xf_input xf_input_text</xsl:text></xsl:attribute>
+					<xsl:attribute name="class"><xsl:text>xf_input</xsl:text></xsl:attribute>
 					<xsl:if test="@max"><xsl:attribute name="data-max"><xsl:value-of select="@max"/></xsl:attribute></xsl:if>
 					<xsl:if test="@min"><xsl:attribute name="data-min"><xsl:value-of select="@min"/></xsl:attribute></xsl:if>
 					<xsl:if test="@length"><xsl:attribute name="data-length"><xsl:value-of select="@length"/></xsl:attribute></xsl:if>
 					<xsl:if test="@regexp"><xsl:attribute name="data-regexp"><xsl:value-of select="@regexp"/></xsl:attribute></xsl:if>
-					<xsl:if test="@required"><xsl:attribute name="data-required"><xsl:value-of select="@required"/></xsl:attribute></xsl:if>					<xsl:if test="@error"><xsl:attribute name="data-error"><xsl:value-of select="@error"/></xsl:attribute></xsl:if>
+					<xsl:if test="@required"><xsl:attribute name="data-required"><xsl:value-of select="@required"/></xsl:attribute></xsl:if>
+					<xsl:if test="@error"><xsl:attribute name="data-error"><xsl:value-of select="@error"/></xsl:attribute></xsl:if>
+					<xsl:call-template name="checkvalue">
+						<xsl:with-param name="context" select="."/>
+					</xsl:call-template>
 				</xsl:element>
 				<xsl:apply-templates select="hint"/>
 			</xsl:element>
@@ -154,5 +158,34 @@
 			<xsl:attribute name="class"><xsl:text>xf-label</xsl:text></xsl:attribute>
 			<xsl:value-of select="text()"/>
 		</xsl:element>
+	</xsl:template>
+	
+	<!-- Шаблон для проверка значения формы-->
+	<xsl:template name="checkvalue">
+		<xsl:param name="context"/>
+		<xsl:variable name="submit-value" select="exsl:node-set($submit-request)/root/item[@id=$context/@id]/text()"/>
+		<xsl:if test="string-length($submit-value)&gt;0">
+			<xsl:if test="$context/@required = 'true'">
+				<xsl:if test="not($submit-value)">
+					<xsl:attribute name="class">validation-wrong</xsl:attribute>
+				</xsl:if>
+			</xsl:if>
+			<xsl:if test="string-length($context/@length)&gt;0">
+				<xsl:if test="not ( string-length($submit-value)=$context/@length)">
+					<xsl:attribute name="class">validation-wrong</xsl:attribute>
+				</xsl:if>				
+			</xsl:if>
+			<xsl:if test="string-length($context/@max)&gt;0">
+				<xsl:if test="number($submit-value) &gt; $context/@max">
+					<xsl:attribute name="class">validation-wrong</xsl:attribute>
+				</xsl:if>								
+			</xsl:if>
+			<xsl:if test="string-length($context/@min)&gt;0">
+				<xsl:if test="number($submit-value) &lt; $context/@min">
+					<xsl:attribute name="class">validation-wrong</xsl:attribute>
+				</xsl:if>												
+			</xsl:if>
+			<xsl:attribute name="value"><xsl:value-of select="$submit-value"/></xsl:attribute>
+		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>
