@@ -5,6 +5,7 @@
 	<xsl:output method="html" encoding="UTF-8"/>
 	<xsl:param name="scid"/> <!-- Идентификатор формы-->
 	<xsl:param name="submit-request">
+		<!-- Убрать закомментированный участок кода для демонстрации работы валидации средствами xsl -->
 <!--		<root>
 			<item id="formComment">Коммуналька</item>
 			<item id="tempAccount">2131211111</item>

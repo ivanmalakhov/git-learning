@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:exsl="http://exslt.org/common" extension-element-prefixes="exsl">
+<!--Шаблон для построения валидации формы -->
 	<xsl:template match="form">
 		<xsl:element name="form">
 			<xsl:attribute name="name">frmPayment</xsl:attribute>
