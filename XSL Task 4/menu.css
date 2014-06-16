@@ -1,0 +1,25 @@
+ul {
+	list-style: none;
+}
+.menu {
+	overflow: hidden;
+	margin-bottom: 1.5em;
+	padding-left: 50px;
+}
+
+.menu li {
+	float: left;
+	margin-right: 3.6em;
+}
+
+.menu a {
+	text-transform: uppercase;
+	display: block;
+	border: none;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+.active{
+	color: red;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" hid="menu.xsl"?>
+<root>
+	<request>
+		<host>mysite.com</host>
+		<url>/about</url>
+	</request>
+	<!-- структура проекта-->
+	<project>
+		<page name="Главная">/</page>
+		<page name="Каталог">/catalog</page>
+		<page name="О нас">/about</page>
+		<page name="Контакты">/contact</page>
+	</project>
+</root>
