@@ -5,6 +5,7 @@
 	<xsl:param name="sort">artist</xsl:param>
 	<xsl:param name="order"><xsl:text>ascending</xsl:text></xsl:param>
 	<xsl:param name="artist" />
+	<!-- Словарь для получения типа данных при сортировке-->
 	<xsl:variable name="order-dict">
 			<order>
 				<item id = "year" data-type="number"/>
@@ -24,8 +25,8 @@
 			</head>
 			<body>
 				<xsl:variable select="$order-dict-set/order/item[@id=$sort]/@data-type" name="datatype"/>
-				<xsl:value-of select="$datatype"/>
 				<xsl:apply-templates select="catalog/cd[contains(year,$year)][contains(artist,$artist)]">
+					<!-- Сортировка по входящему параметру. Порядок сортировки из внешнего параметра. Тип данных для сортировки получаем из специального словаря-->
 					<xsl:sort select="*[name()=$sort]"  order="{$order}" data-type="{$datatype}"/>
 				</xsl:apply-templates>			
 			</body>  

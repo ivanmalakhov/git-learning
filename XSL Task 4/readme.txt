@@ -9,5 +9,7 @@
 Параметры для запуска xsltproc:
 xsltproc --output menu.htm  menu.xsl menu.xml
 
+Результат: menu.html
+
 
  
