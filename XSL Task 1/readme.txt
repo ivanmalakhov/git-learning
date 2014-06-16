@@ -57,6 +57,8 @@ xsltproc --output formaandmessage.html --stringparam scid "step_1" formandmessag
 2)Сообщение для формы «step_2» (Одно сообщение которое так же присутствует на форме «step_1»)
 xsltproc --output formaandmessage.html --stringparam scid "step_2" formandmessage.xsl formandmessage.xml
 
+При выполнении задания использовалось как декларативное срабатывание, так и адресное обращение. 
+
 Задание 2. Построение и валидация формы
 
 
@@ -106,3 +108,5 @@ xsltproc --output formaandmessage.html --stringparam scid "step_1" formandmessag
 XSL схема для обработки форм:
 	formandmessage.xsl - общий шалон
 	message.xsl - шаблон обработки элементов формы
+
+При выполнении задания использовалось как декларативное срабатывание, так и адресное обращение. 
