@@ -32,15 +32,20 @@
 			<xsl:apply-templates/>
 		</xsl:element>
 	</xsl:template>
-	<xsl:template match="simpletext">
+	<xsl:template match="text">
 		<xsl:element name="div">
-			<xsl:attribute name="class">simpletext</xsl:attribute>
+			<xsl:attribute name="class">text</xsl:attribute>
 			<xsl:value-of select="text()"/>
 		</xsl:element>
 	</xsl:template>
-	<xsl:template match="listtext">
-		<xsl:element name="li">
-				<xsl:value-of select="text()"/>
-		</xsl:element>
+	<xsl:template match="list">
+		<ul>
+			<xsl:apply-templates select="item" mode="list"/>
+		</ul>
+	</xsl:template>
+	<xsl:template match="item" mode="list">
+		<li>
+			<xsl:value-of select="text()"/>
+		</li>
 	</xsl:template>	
 </xsl:stylesheet>

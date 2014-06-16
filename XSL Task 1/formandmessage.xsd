@@ -144,10 +144,16 @@
 										<xsd:element name="title" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
 										<xsd:element name="section" minOccurs="0" maxOccurs="unbounded">
 											<xsd:complexType>
-												<xsd:sequence minOccurs="0" maxOccurs="unbounded">
-													<xsd:element name="listtext" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
-													<xsd:element name="simpletext" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
-												</xsd:sequence>
+												<xsd:choice minOccurs="0" maxOccurs="unbounded">
+													<xsd:element name="text" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+													<xsd:element name="list" minOccurs="0" maxOccurs="unbounded">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="item" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:choice>
 											</xsd:complexType>
 										</xsd:element>
 									</xsd:sequence>

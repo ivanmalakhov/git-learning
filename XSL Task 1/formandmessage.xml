@@ -98,58 +98,58 @@
 			</submit>
 		</form>
 		<form class="paymentform" id="step_2"/>
-		<form class="paymentform" id="step_3"/>
 	</forms>
 	<messages>
 		<message id="1" messagetype="1" visible="true">
 			<form_id>step_1</form_id>
-			<title>Information message</title>
+			<title>Заголовок информационного сообщения</title>
 			<section>
-				<simpletext>Information message text1</simpletext>
-				<listtext>list 1</listtext>
-				<simpletext>Information message text2</simpletext>
-				<listtext>list 2</listtext>
-				<simpletext>Information message text3</simpletext>
+				<text>Первая часть информационного сообщения</text>
+				<list>
+					<item>Элемент 1</item>
+					<item>Элемент 2</item>
+				</list>
+				<text>Продолжение первой части информационного сообщения</text>
 			</section>
 			<section>
-				<simpletext>Information message text21</simpletext>
-				<listtext>list 12</listtext>
-				<listtext>list 222</listtext>
-				<simpletext>Information message text22</simpletext>
+				<text>Вторая часть информационного сообщения</text>
+				<list>
+					<item>Элемент 21</item>
+					<item>Элемент 22</item>
+				</list>
+				<text>Продолжение второй части информационного сообщения</text>
 			</section>
 		</message>
 		<message id="3" messagetype="3" visible="false">
 			<form_id>step_3</form_id>
 			<form_id>step_1</form_id>
-			<title>Critical message</title>
+			<title>Заголовок срочного сообщения</title>
 			<section>
-				<simpletext>Critical message text2</simpletext>
-				<listtext>list 12</listtext>
-				<listtext>list 222</listtext>
-				<simpletext>Critical message text2</simpletext>
-			</section>
-			<section>
-				<simpletext>Critical message text2</simpletext>
-				<listtext>list 12</listtext>
-				<listtext>list 222</listtext>
-				<simpletext>Critical message text2</simpletext>
+				<text>Срочное сообщени</text>
+				<list>
+					<item>Срочно 1</item>
+					<item>Срочно 2</item>
+				</list>
+				<text>Продолжение срочного сообщения</text>
 			</section>
 		</message>
 		<message id="2" messagetype="2" visible="true">
 			<form_id>step_1</form_id>
 			<form_id>step_2</form_id>
-			<title>Warning message</title>
+			<title>Заголовок предупреждения</title>
 			<section>
-				<simpletext>Warning message text2</simpletext>
-				<listtext>list 12</listtext>
-				<listtext>list 222</listtext>
-				<simpletext>Warning message text2</simpletext>
+				<text>Первое предупреждение</text>
+				<list>
+					<item>Предуреждение 1</item>
+					<item>Предупреждение 2</item>
+				</list>
 			</section>
 			<section>
-				<simpletext>Warning message text2</simpletext>
-				<listtext>list 12</listtext>
-				<listtext>list 222</listtext>
-				<simpletext>Warning message text2</simpletext>
+				<text>Второе предупреждение</text>
+				<list>
+					<item>Предупреждение 21</item>
+					<item>Предупреждение 22</item>
+				</list>
 			</section>
 		</message>
 	</messages>
