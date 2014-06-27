@@ -1,5 +1,6 @@
-(function() {
-  var app = angular.module('gemStore', []);
+(function () {
+    use strict;
+    var app = angular.module('gemStore', []);
 
   app.controller('GalleryController', function(){
     this.current = 0;
